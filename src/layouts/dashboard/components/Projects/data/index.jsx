@@ -1,21 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable react/function-component-definition */
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Tooltip from "@mui/material/Tooltip";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
@@ -23,16 +6,16 @@ import MDAvatar from "components/MDAvatar";
 import MDProgress from "components/MDProgress";
 
 // Images
-import logoXD from "assets/images/small-logos/logo-xd.svg";
-import logoAtlassian from "assets/images/small-logos/logo-atlassian.svg";
-import logoSlack from "assets/images/small-logos/logo-slack.svg";
-import logoSpotify from "assets/images/small-logos/logo-spotify.svg";
-import logoJira from "assets/images/small-logos/logo-jira.svg";
-import logoInvesion from "assets/images/small-logos/logo-invision.svg";
-import team1 from "assets/images/team-1.jpg";
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
+import logoDrogaRaia from "assets/images/logo-droga-raia.png";
+import logoDrogasil from "assets/images/logo-drogasil.png";
+import logoPacheco from "assets/images/logo-droga-raia.png";
+import logoSãoJoão from "assets/images/logo-drogasil.png";
+import logoUltrafarma from "assets/images/logo-droga-raia.png";
+import logoPanvel from "assets/images/logo-drogasil.png";
+import team1 from "assets/images/logo-droga-raia.png";
+import team2 from "assets/images/logo-drogasil.png";
+import team3 from "assets/images/logo-droga-raia.png";
+import team4 from "assets/images/logo-drogasil.png";
 
 export default function data() {
   const avatars = (members) =>
@@ -71,137 +54,137 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "companies", accessor: "companies", width: "45%", align: "left" },
-      { Header: "members", accessor: "members", width: "10%", align: "left" },
-      { Header: "budget", accessor: "budget", align: "center" },
-      { Header: "completion", accessor: "completion", align: "center" },
+      { Header: "farmácias", accessor: "farmacias", width: "45%", align: "left" },
+      { Header: "membros", accessor: "membros", width: "10%", align: "left" },
+      { Header: "orçamento", accessor: "orcamento", align: "center" },
+      { Header: "progresso", accessor: "progresso", align: "center" },
     ],
 
     rows: [
       {
-        companies: <Company image={logoXD} name="Material UI XD Version" />,
-        members: (
+        farmacias: <Company image={logoDrogaRaia} name="Droga Raia" />,
+        membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team1, "Ryan Tompson"],
-              [team2, "Romina Hadid"],
-              [team3, "Alexander Smith"],
-              [team4, "Jessica Doe"],
+              [team1, "João Silva"],
+              [team2, "Maria Oliveira"],
+              [team3, "Carlos Souza"],
+              [team4, "Ana Santos"],
             ])}
           </MDBox>
         ),
-        budget: (
+        orcamento: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $14,000
+            R$ 150.000
           </MDTypography>
         ),
-        completion: (
+        progresso: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={60} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoAtlassian} name="Add Progress Track" />,
-        members: (
+        farmacias: <Company image={logoDrogasil} name="Drogasil" />,
+        membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team2, "Romina Hadid"],
-              [team4, "Jessica Doe"],
+              [team2, "Maria Oliveira"],
+              [team4, "Ana Santos"],
             ])}
           </MDBox>
         ),
-        budget: (
+        orcamento: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $3,000
+            R$ 50.000
           </MDTypography>
         ),
-        completion: (
+        progresso: (
           <MDBox width="8rem" textAlign="left">
-            <MDProgress value={10} color="info" variant="gradient" label={false} />
+            <MDProgress value={20} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoSlack} name="Fix Platform Errors" />,
-        members: (
+        farmacias: <Company image={logoPacheco} name="Drogaria Pacheco" />,
+        membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team1, "Ryan Tompson"],
-              [team3, "Alexander Smith"],
+              [team1, "João Silva"],
+              [team3, "Carlos Souza"],
             ])}
           </MDBox>
         ),
-        budget: (
+        orcamento: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            Not set
+            Não definido
           </MDTypography>
         ),
-        completion: (
+        progresso: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={100} color="success" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoSpotify} name="Launch our Mobile App" />,
-        members: (
+        farmacias: <Company image={logoSãoJoão} name="Farmácias São João" />,
+        membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team4, "Jessica Doe"],
-              [team3, "Alexander Smith"],
-              [team2, "Romina Hadid"],
-              [team1, "Ryan Tompson"],
+              [team4, "Ana Santos"],
+              [team3, "Carlos Souza"],
+              [team2, "Maria Oliveira"],
+              [team1, "João Silva"],
             ])}
           </MDBox>
         ),
-        budget: (
+        orcamento: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $20,500
+            R$ 250.000
           </MDTypography>
         ),
-        completion: (
+        progresso: (
           <MDBox width="8rem" textAlign="left">
             <MDProgress value={100} color="success" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoJira} name="Add the New Pricing Page" />,
-        members: (
+        farmacias: <Company image={logoUltrafarma} name="Ultrafarma" />,
+        membros: (
           <MDBox display="flex" py={1}>
-            {avatars([[team4, "Jessica Doe"]])}
+            {avatars([[team4, "Ana Santos"]])}
           </MDBox>
         ),
-        budget: (
+        orcamento: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $500
+            R$ 10.000
           </MDTypography>
         ),
-        completion: (
+        progresso: (
           <MDBox width="8rem" textAlign="left">
-            <MDProgress value={25} color="info" variant="gradient" label={false} />
+            <MDProgress value={30} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },
       {
-        companies: <Company image={logoInvesion} name="Redesign New Online Shop" />,
-        members: (
+        farmacias: <Company image={logoPanvel} name="Panvel" />,
+        membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team1, "Ryan Tompson"],
-              [team4, "Jessica Doe"],
+              [team1, "João Silva"],
+              [team4, "Ana Santos"],
             ])}
           </MDBox>
         ),
-        budget: (
+        orcamento: (
           <MDTypography variant="caption" color="text" fontWeight="medium">
-            $2,000
+            R$ 70.000
           </MDTypography>
         ),
-        completion: (
+        progresso: (
           <MDBox width="8rem" textAlign="left">
-            <MDProgress value={40} color="info" variant="gradient" label={false} />
+            <MDProgress value={45} color="info" variant="gradient" label={false} />
           </MDBox>
         ),
       },
