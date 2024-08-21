@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
 
-// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
@@ -52,8 +51,8 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "", name: "Leo" },
-  links: [{ href: "", name: "LEO" }],
+  company: { href: "", name: "FarmaNotifica - Todos os direitos reservados" },
+  links: [{ href: "", name: "FarmaNotifica - Todos os direitos reservados" }],
 };
 
 // Typechecking props for the Footer

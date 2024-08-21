@@ -5,7 +5,6 @@ import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 import MDProgress from "components/MDProgress";
 
-// Images
 import logoDrogaRaia from "assets/images/logo-droga-raia.png";
 import logoDrogasil from "assets/images/logo-drogasil.png";
 import logoPacheco from "assets/images/logo-droga-raia.png";

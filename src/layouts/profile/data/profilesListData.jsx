@@ -1,79 +1,59 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// Images
-import kal from "assets/images/kal-visuals-square.jpg";
-import marie from "assets/images/marie.jpg";
-import ivana from "assets/images/ivana-square.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
+import profile from "assets/images/profile.jpeg";
 
 export default [
   {
-    image: kal,
-    name: "Sophie B.",
-    description: "Hi! I need more information..",
+    image: profile,
+    name: "Sofia B.",
+    description: "Oi! Preciso de mais informações...",
     action: {
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
+      label: "Mensagem",
     },
   },
   {
-    image: marie,
-    name: "Anne Marie",
-    description: "Awesome work, can you..",
+    image: profile,
+    name: "Ana Maria",
+    description: "Trabalho incrível, você pode...",
     action: {
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
+      label: "Mensagem",
     },
   },
   {
-    image: ivana,
-    name: "Ivanna",
-    description: "About files I can..",
+    image: profile,
+    name: "Ivana",
+    description: "Sobre os arquivos, eu posso...",
     action: {
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
+      label: "Mensagem",
     },
   },
   {
-    image: team4,
-    name: "Peterson",
-    description: "Have a great afternoon..",
+    image: profile,
+    name: "Pedro",
+    description: "Tenha uma ótima tarde...",
     action: {
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
+      label: "Mensagem",
     },
   },
   {
-    image: team3,
-    name: "Nick Daniel",
-    description: "Hi! I need more information..",
+    image: profile,
+    name: "Nicolas Daniel",
+    description: "Oi! Preciso de mais informações...",
     action: {
       type: "internal",
       route: "/pages/profile/profile-overview",
       color: "info",
-      label: "reply",
+      label: "Mensagem",
     },
   },
 ];

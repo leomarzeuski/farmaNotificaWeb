@@ -22,15 +22,11 @@ import PlatformSettings from "layouts/profile/components/PlatformSettings";
 // Data
 import profilesListData from "layouts/profile/data/profilesListData";
 
-// Images
-import homeDecor1 from "assets/images/home-decor-1.jpg";
-import homeDecor2 from "assets/images/home-decor-2.jpg";
-import homeDecor3 from "assets/images/home-decor-3.jpg";
-import homeDecor4 from "assets/images/home-decor-4.jpeg";
-import team1 from "assets/images/team-1.jpg";
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
+import farmaciaImg from "assets/images/Farmacia-Autos-Custo-de-Paulinia.jpeg";
+import team1 from "assets/images/profile.jpeg";
+import team2 from "assets/images/profile.jpeg";
+import team3 from "assets/images/profile.jpeg";
+import team4 from "assets/images/profile.jpeg";
 
 function Overview() {
   return (
@@ -46,48 +42,52 @@ function Overview() {
             <Grid item xs={12} md={6} xl={4} sx={{ display: "flex" }}>
               <Divider orientation="vertical" sx={{ ml: -2, mr: 1 }} />
               <ProfileInfoCard
-                title="profile information"
-                description="Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
+                title="Informações do Perfil"
+                description="Olá, eu sou Dr. João Silva, farmacêutico responsável. Nosso objetivo é fornecer os melhores medicamentos e atendimento de qualidade para todos os nossos clientes."
                 info={{
-                  fullName: "Alec M. Thompson",
-                  mobile: "(44) 123 1234 123",
-                  email: "alecthompson@mail.com",
-                  location: "USA",
+                  fullName: "Dr. João Silva",
+                  mobile: "(11) 98765-4321",
+                  email: "joaosilva@farmacia.com",
+                  location: "Brasil",
                 }}
                 social={[
                   {
-                    link: "https://www.facebook.com/CreativeTim/",
+                    link: "https://www.facebook.com/",
                     icon: <FacebookIcon />,
                     color: "facebook",
                   },
                   {
-                    link: "https://twitter.com/creativetim",
+                    link: "https://twitter.com/",
                     icon: <TwitterIcon />,
                     color: "twitter",
                   },
                   {
-                    link: "https://www.instagram.com/creativetimofficial/",
+                    link: "https://www.instagram.com/",
                     icon: <InstagramIcon />,
                     color: "instagram",
                   },
                 ]}
-                action={{ route: "", tooltip: "Edit Profile" }}
+                action={{ route: "", tooltip: "Editar Perfil" }}
                 shadow={false}
               />
               <Divider orientation="vertical" sx={{ mx: 0 }} />
             </Grid>
             <Grid item xs={12} xl={4}>
-              <ProfilesList title="conversations" profiles={profilesListData} shadow={false} />
+              <ProfilesList
+                title="Conversa com Clientes"
+                profiles={profilesListData}
+                shadow={false}
+              />
             </Grid>
           </Grid>
         </MDBox>
         <MDBox pt={2} px={2} lineHeight={1.25}>
           <MDTypography variant="h6" fontWeight="medium">
-            Projects
+            Farmacias
           </MDTypography>
           <MDBox mb={1}>
             <MDTypography variant="button" color="text">
-              Architects design houses
+              Melhoria no atendimento e entrega de medicamentos
             </MDTypography>
           </MDBox>
         </MDBox>
@@ -95,81 +95,61 @@ function Overview() {
           <Grid container spacing={6}>
             <Grid item xs={12} md={6} xl={3}>
               <DefaultProjectCard
-                image={homeDecor1}
-                label="project #2"
-                title="modern"
-                description="As Uber works through a huge amount of internal management turmoil."
+                image={farmaciaImg}
+                label="Farmacia Droga+"
+                title="Entrega Rápida"
+                description="Implementação de um sistema de entrega expressa para medicamentos urgentes."
                 action={{
                   type: "internal",
                   route: "/pages/profile/profile-overview",
                   color: "info",
-                  label: "view project",
+                  label: "ver projeto",
                 }}
                 authors={[
-                  { image: team1, name: "Elena Morison" },
-                  { image: team2, name: "Ryan Milly" },
-                  { image: team3, name: "Nick Daniel" },
-                  { image: team4, name: "Peterson" },
+                  { image: team3, name: "Fernanda Lima" },
+                  { image: team4, name: "Lucas Pereira" },
+                  { image: team1, name: "Maria Andrade" },
+                  { image: team2, name: "Carlos Eduardo" },
                 ]}
               />
             </Grid>
             <Grid item xs={12} md={6} xl={3}>
               <DefaultProjectCard
-                image={homeDecor2}
-                label="project #1"
-                title="scandinavian"
-                description="Music is something that everyone has their own specific opinion about."
+                image={farmaciaImg}
+                label="Farmacia DrogaRaia"
+                title="Aprimoramento do Atendimento"
+                description="Treinamento contínuo da equipe para garantir o melhor atendimento aos nossos clientes."
                 action={{
                   type: "internal",
                   route: "/pages/profile/profile-overview",
                   color: "info",
-                  label: "view project",
+                  label: "ver projeto",
                 }}
                 authors={[
-                  { image: team3, name: "Nick Daniel" },
-                  { image: team4, name: "Peterson" },
-                  { image: team1, name: "Elena Morison" },
-                  { image: team2, name: "Ryan Milly" },
+                  { image: team4, name: "Lucas Pereira" },
+                  { image: team3, name: "Fernanda Lima" },
+                  { image: team2, name: "Carlos Eduardo" },
+                  { image: team1, name: "Maria Andrade" },
                 ]}
               />
             </Grid>
             <Grid item xs={12} md={6} xl={3}>
               <DefaultProjectCard
-                image={homeDecor3}
-                label="project #3"
-                title="minimalist"
-                description="Different people have different taste, and various types of music."
+                image={farmaciaImg}
+                label="Farmacia Drogasil"
+                title="Campanha de Vacinação"
+                description="Organização de uma campanha de vacinação para a comunidade local."
                 action={{
                   type: "internal",
                   route: "/pages/profile/profile-overview",
                   color: "info",
-                  label: "view project",
+                  label: "ver projeto",
                 }}
                 authors={[
-                  { image: team4, name: "Peterson" },
-                  { image: team3, name: "Nick Daniel" },
-                  { image: team2, name: "Ryan Milly" },
-                  { image: team1, name: "Elena Morison" },
-                ]}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} xl={3}>
-              <DefaultProjectCard
-                image={homeDecor4}
-                label="project #4"
-                title="gothic"
-                description="Why would anyone pick blue over pink? Pink is obviously a better color."
-                action={{
-                  type: "internal",
-                  route: "/pages/profile/profile-overview",
-                  color: "info",
-                  label: "view project",
-                }}
-                authors={[
-                  { image: team4, name: "Peterson" },
-                  { image: team3, name: "Nick Daniel" },
-                  { image: team2, name: "Ryan Milly" },
-                  { image: team1, name: "Elena Morison" },
+                  { image: team4, name: "Lucas Pereira" },
+                  { image: team3, name: "Fernanda Lima" },
+                  { image: team2, name: "Carlos Eduardo" },
+                  { image: team1, name: "Maria Andrade" },
                 ]}
               />
             </Grid>

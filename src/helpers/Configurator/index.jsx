@@ -6,9 +6,6 @@ import Icon from "@mui/material/Icon";
 import IconButton from "@mui/material/IconButton";
 import Switch from "@mui/material/Switch";
 
-// @mui icons
-
-// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDButton from "components/MDButton";
 import MDTypography from "components/MDTypography";
@@ -117,9 +114,9 @@ function Configurator() {
         px={3}
       >
         <MDBox>
-          <MDTypography variant="h5">Material UI Configurator</MDTypography>
+          <MDTypography variant="h5">FarmaNotifica</MDTypography>
           <MDTypography variant="body2" color="text">
-            See our dashboard options.
+            Veja as opções do nosso dashboard.
           </MDTypography>
         </MDBox>
 
@@ -142,7 +139,7 @@ function Configurator() {
 
       <MDBox pt={0.5} pb={3} px={3}>
         <MDBox>
-          <MDTypography variant="h6">Sidenav Colors</MDTypography>
+          <MDTypography variant="h6">Cores da Barra Lateral</MDTypography>
 
           <MDBox mb={0.5}>
             {sidenavColors.map((color) => (
@@ -188,9 +185,9 @@ function Configurator() {
         </MDBox>
 
         <MDBox mt={3} lineHeight={1}>
-          <MDTypography variant="h6">Sidenav Type</MDTypography>
+          <MDTypography variant="h6">Tipo da Barra Lateral</MDTypography>
           <MDTypography variant="button" color="text">
-            Choose between different sidenav types.
+            Escolha entre diferentes tipos de barra lateral.
           </MDTypography>
 
           <MDBox
@@ -212,7 +209,7 @@ function Configurator() {
                   : sidenavTypeButtonsStyles
               }
             >
-              Dark
+              Escuro
             </MDButton>
             <MDBox sx={{ mx: 1, width: "8rem", minWidth: "8rem" }}>
               <MDButton
@@ -227,7 +224,7 @@ function Configurator() {
                     : sidenavTypeButtonsStyles
                 }
               >
-                Transparent
+                Transparente
               </MDButton>
             </MDBox>
             <MDButton
@@ -242,7 +239,7 @@ function Configurator() {
                   : sidenavTypeButtonsStyles
               }
             >
-              White
+              Branco
             </MDButton>
           </MDBox>
         </MDBox>
@@ -253,13 +250,13 @@ function Configurator() {
           mt={3}
           lineHeight={1}
         >
-          <MDTypography variant="h6">Navbar Fixed</MDTypography>
+          <MDTypography variant="h6">Navbar Fixa</MDTypography>
 
           <Switch checked={fixedNavbar} onChange={handleFixedNavbar} />
         </MDBox>
         <Divider />
         <MDBox display="flex" justifyContent="space-between" alignItems="center" lineHeight={1}>
-          <MDTypography variant="h6">Light / Dark</MDTypography>
+          <MDTypography variant="h6">Claro / Escuro</MDTypography>
           <Switch checked={darkMode} onChange={handleDarkMode} />
         </MDBox>
         <Divider />

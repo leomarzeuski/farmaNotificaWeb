@@ -26,7 +26,6 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Icon from "@mui/material/Icon";
 
-// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
@@ -34,9 +33,8 @@ import MDAvatar from "components/MDAvatar";
 // Material Dashboard 2 React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
-// Images
-import burceMars from "assets/images/bruce-mars.jpg";
-import backgroundImage from "assets/images/bg-profile.jpeg";
+import profile from "assets/images/profile.jpeg";
+import backgroundImage from "assets/images/farmaciaBackgorundProfile.jpg";
 
 function Header({ children }) {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
@@ -94,12 +92,12 @@ function Header({ children }) {
       >
         <Grid container spacing={3} alignItems="center">
           <Grid item>
-            <MDAvatar src={burceMars} alt="profile-image" size="xl" shadow="sm" />
+            <MDAvatar src={profile} alt="profile-image" size="xl" shadow="sm" />
           </Grid>
           <Grid item>
             <MDBox height="100%" mt={0.5} lineHeight={1}>
               <MDTypography variant="h5" fontWeight="medium">
-                Richard Davis
+                Leonardo
               </MDTypography>
               <MDTypography variant="button" color="text" fontWeight="regular">
                 CEO / Co-Founder
@@ -110,7 +108,7 @@ function Header({ children }) {
             <AppBar position="static">
               <Tabs orientation={tabsOrientation} value={tabValue} onChange={handleSetTabValue}>
                 <Tab
-                  label="App"
+                  label="Aplicativo"
                   icon={
                     <Icon fontSize="small" sx={{ mt: -0.25 }}>
                       home
@@ -118,7 +116,7 @@ function Header({ children }) {
                   }
                 />
                 <Tab
-                  label="Message"
+                  label="Mensagem"
                   icon={
                     <Icon fontSize="small" sx={{ mt: -0.25 }}>
                       email
@@ -126,7 +124,7 @@ function Header({ children }) {
                   }
                 />
                 <Tab
-                  label="Settings"
+                  label="Configurações "
                   icon={
                     <Icon fontSize="small" sx={{ mt: -0.25 }}>
                       settings

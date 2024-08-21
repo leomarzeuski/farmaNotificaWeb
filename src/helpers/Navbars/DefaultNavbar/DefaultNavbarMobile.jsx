@@ -19,7 +19,6 @@ import PropTypes from "prop-types";
 // @mui material components
 import Menu from "@mui/material/Menu";
 
-// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 
 // Material Dashboard 2 React example components
