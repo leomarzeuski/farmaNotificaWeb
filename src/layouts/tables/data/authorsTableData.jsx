@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
 
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-import MDAvatar from "components/MDAvatar";
-import MDBadge from "components/MDBadge";
+import MDBox from 'components/MDBox';
+import MDTypography from 'components/MDTypography';
+import MDAvatar from 'components/MDAvatar';
+import MDBadge from 'components/MDBadge';
 
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
+import team2 from 'assets/images/team-2.jpg';
+import team3 from 'assets/images/team-3.jpg';
+import team4 from 'assets/images/team-4.jpg';
 
 export default function data() {
   const Author = ({ image, name, surname, email }) => (
@@ -28,12 +28,12 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Nome", accessor: "name", width: "20%", align: "left" },
-      { Header: "Sobrenome", accessor: "surname", width: "20%", align: "left" },
-      { Header: "Status", accessor: "status", align: "center" },
-      { Header: "Data de Recebimento", accessor: "receivedDate", align: "center" },
-      { Header: "Data de Retirada", accessor: "withdrawalDate", align: "center" },
-      { Header: "Visualizar Solicitação", accessor: "download", align: "center" },
+      { Header: 'Nome', accessor: 'name', width: '20%', align: 'left' },
+      { Header: 'Sobrenome', accessor: 'surname', width: '20%', align: 'left' },
+      { Header: 'Status', accessor: 'status', align: 'center' },
+      { Header: 'Data de Recebimento', accessor: 'receivedDate', align: 'center' },
+      { Header: 'Data de Retirada', accessor: 'withdrawalDate', align: 'center' },
+      { Header: 'Visualizar Solicitação', accessor: 'download', align: 'center' },
     ],
 
     rows: [

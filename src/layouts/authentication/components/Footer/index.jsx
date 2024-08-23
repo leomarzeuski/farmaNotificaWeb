@@ -1,13 +1,13 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // @mui material components
-import Container from "@mui/material/Container";
+import Container from '@mui/material/Container';
 
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
+import MDBox from 'components/MDBox';
+import MDTypography from 'components/MDTypography';
 
 // Material Dashboard 2 React base styles
-import typography from "assets/theme/base/typography";
+import typography from 'assets/theme/base/typography';
 
 function Footer({ light }) {
   const { size } = typography;
@@ -18,7 +18,7 @@ function Footer({ light }) {
         <MDBox
           width="100%"
           display="flex"
-          flexDirection={{ xs: "column", lg: "row" }}
+          flexDirection={{ xs: 'column', lg: 'row' }}
           justifyContent="space-between"
           alignItems="center"
           px={1.5}
@@ -28,7 +28,7 @@ function Footer({ light }) {
             justifyContent="center"
             alignItems="center"
             flexWrap="wrap"
-            color={light ? "white" : "text"}
+            color={light ? 'white' : 'text'}
             fontSize={size.sm}
           >
             {/* //TODO */}

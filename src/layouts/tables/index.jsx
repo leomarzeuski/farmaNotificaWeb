@@ -1,16 +1,16 @@
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
 
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
+import MDBox from 'components/MDBox';
+import MDTypography from 'components/MDTypography';
 
-import DashboardLayout from "helpers/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "helpers/Navbars/DashboardNavbar";
-import Footer from "helpers/Footer";
-import DataTable from "helpers/Tables";
+import DashboardLayout from 'helpers/LayoutContainers/DashboardLayout';
+import DashboardNavbar from 'helpers/Navbars/DashboardNavbar';
+import Footer from 'helpers/Footer';
+import DataTable from 'helpers/Tables';
 
 // Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
+import authorsTableData from 'layouts/tables/data/authorsTableData';
 
 function Tables() {
   const { columns, rows } = authorsTableData();
