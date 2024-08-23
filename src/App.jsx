@@ -25,6 +25,8 @@ import routes from "routes";
 
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "context";
 
+import logo from "./assets/images/favicon.png";
+
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
   const {
@@ -143,7 +145,7 @@ export default function App() {
         <>
           <Sidenav
             color={sidenavColor}
-            // brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
+            brand={(transparentSidenav && !darkMode) || whiteSidenav ? logo : logo}
             brandName="FarmaNotifica"
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
