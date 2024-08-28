@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 // @mui material components
-import Card from "@mui/material/Card";
-import Switch from "@mui/material/Switch";
+import Card from '@mui/material/Card';
+import Switch from '@mui/material/Switch';
 
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
+import MDBox from 'components/MDBox';
+import MDTypography from 'components/MDTypography';
 
 function PlatformSettings() {
   const [orderUpdates, setOrderUpdates] = useState(true);
   const [newArrivals, setNewArrivals] = useState(false);
 
   return (
-    <Card sx={{ boxShadow: "none" }}>
+    <Card sx={{ boxShadow: 'none' }}>
       <MDBox p={2}>
         <MDTypography variant="h6" fontWeight="medium" textTransform="capitalize">
           Configurações da Plataforma

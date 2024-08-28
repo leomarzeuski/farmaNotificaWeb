@@ -14,29 +14,29 @@ Coded by www.creative-tim.com
 */
 
 // prop-types is a library for typechecking of props
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // @mui material components
-import Grid from "@mui/material/Grid";
+import Grid from '@mui/material/Grid';
 
-import MDBox from "components/MDBox";
+import MDBox from 'components/MDBox';
 
 // Material Dashboard 2 React example components
-import DefaultNavbar from "helpers/Navbars/DefaultNavbar";
-import PageLayout from "helpers/LayoutContainers/PageLayout";
+import DefaultNavbar from 'helpers/Navbars/DefaultNavbar';
+import PageLayout from 'helpers/LayoutContainers/PageLayout';
 
 // Authentication pages components
-import Footer from "layouts/authentication/components/Footer";
+import Footer from 'layouts/authentication/components/Footer';
 
 function BasicLayout({ image, children }) {
   return (
     <PageLayout>
       <DefaultNavbar
         action={{
-          type: "",
-          route: "/dashboard",
-          label: "Acesse Gratis",
-          color: "dark",
+          type: '',
+          route: '/dashboard',
+          label: 'Acesse Gratis',
+          color: 'dark',
         }}
       />
       <MDBox
@@ -50,9 +50,9 @@ function BasicLayout({ image, children }) {
               rgba(gradients.dark.main, 0.6),
               rgba(gradients.dark.state, 0.6)
             )}, url(${image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
       />
       <MDBox px={1} width="100%" height="100vh" mx="auto">

@@ -1,28 +1,28 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 // @mui material components
-import Card from "@mui/material/Card";
-import Switch from "@mui/material/Switch";
-import Grid from "@mui/material/Grid";
-import MuiLink from "@mui/material/Link";
+import Card from '@mui/material/Card';
+import Switch from '@mui/material/Switch';
+import Grid from '@mui/material/Grid';
+import MuiLink from '@mui/material/Link';
 
 // @mui icons
-import FacebookIcon from "@mui/icons-material/Facebook";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from '@mui/icons-material/Facebook';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import GoogleIcon from '@mui/icons-material/Google';
 
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-import MDInput from "components/MDInput";
-import MDButton from "components/MDButton";
+import MDBox from 'components/MDBox';
+import MDTypography from 'components/MDTypography';
+import MDInput from 'components/MDInput';
+import MDButton from 'components/MDButton';
 
 // Authentication layout components
-import BasicLayout from "layouts/authentication/components/BasicLayout";
+import BasicLayout from 'layouts/authentication/components/BasicLayout';
 
-import bgImage from "assets/images/bg-sign-in-basic.jpeg";
+import bgImage from 'assets/images/bg-sign-in-basic.jpeg';
 
 function Basic() {
   const [rememberMe, setRememberMe] = useState(false);
@@ -63,7 +63,7 @@ function Basic() {
                 fontWeight="regular"
                 color="text"
                 onClick={handleSetRememberMe}
-                sx={{ cursor: "pointer", userSelect: "none", ml: -1 }}
+                sx={{ cursor: 'pointer', userSelect: 'none', ml: -1 }}
               >
                 &nbsp;&nbsp;Lembrar de mim
               </MDTypography>
@@ -75,7 +75,7 @@ function Basic() {
             </MDBox>
             <MDBox mt={3} mb={1} textAlign="center">
               <MDTypography variant="button" color="text">
-                Na&apos;o tem uma conta?{" "}
+                Na&apos;o tem uma conta?{' '}
                 <MDTypography
                   component={Link}
                   to="/authentication/sign-up"

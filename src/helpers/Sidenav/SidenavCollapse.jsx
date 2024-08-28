@@ -1,21 +1,21 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // @mui material components
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Icon from "@mui/material/Icon";
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Icon from '@mui/material/Icon';
 
-import MDBox from "components/MDBox";
+import MDBox from 'components/MDBox';
 
 import {
   collapseItem,
   collapseIconBox,
   collapseIcon,
   collapseText,
-} from "helpers/Sidenav/styles/sidenavCollapse";
+} from 'helpers/Sidenav/styles/sidenavCollapse';
 
-import { useMaterialUIController } from "context";
+import { useMaterialUIController } from 'context';
 
 function SidenavCollapse({ icon, name, active, ...rest }) {
   const [controller] = useMaterialUIController();
@@ -40,7 +40,7 @@ function SidenavCollapse({ icon, name, active, ...rest }) {
             collapseIconBox(theme, { transparentSidenav, whiteSidenav, darkMode, active })
           }
         >
-          {typeof icon === "string" ? (
+          {typeof icon === 'string' ? (
             <Icon sx={(theme) => collapseIcon(theme, { active })}>{icon}</Icon>
           ) : (
             icon
