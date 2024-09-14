@@ -1,34 +1,81 @@
 import { useState } from 'react';
-
-// react-router-dom components
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
-// @mui material components
 import Card from '@mui/material/Card';
 import Switch from '@mui/material/Switch';
 import Grid from '@mui/material/Grid';
-import MuiLink from '@mui/material/Link';
-
-// @mui icons
-import FacebookIcon from '@mui/icons-material/Facebook';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import GoogleIcon from '@mui/icons-material/Google';
 
 import MDBox from 'components/MDBox';
 import MDTypography from 'components/MDTypography';
 import MDInput from 'components/MDInput';
 import MDButton from 'components/MDButton';
 
-// Authentication layout components
 import BasicLayout from 'layouts/authentication/components/BasicLayout';
-
 import bgImage from 'assets/images/bg-sign-in-basic.jpeg';
+import * as unityService from 'services/userunity';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../../../context/auth';
 
 function Basic() {
   const [rememberMe, setRememberMe] = useState(false);
-
+  const [userLogin, setUserLogin] = useState({});
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const handleSetRememberMe = () => setRememberMe(!rememberMe);
 
+  function generateRandomToken(length = 32) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let token = '';
+    for (let i = 0; i < length; i++) {
+      token += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return token;
+  }
+
+  const handleSignIn = async () => {
+    try {
+      const pendingToast = toast.loading('Fazendo login, por favor aguarde...');
+
+      const response = await unityService.getUserUnitsLogin(userLogin.dsEmail, userLogin.dsSenha);
+
+      const token = generateRandomToken();
+
+      if (token && response) {
+        login(response);
+        if (rememberMe) {
+          localStorage.setItem('authToken', token);
+        } else {
+          sessionStorage.setItem('authToken', token);
+        }
+
+        toast.update(pendingToast, {
+          render: 'Login realizado com sucesso!',
+          type: 'success',
+          isLoading: false,
+          autoClose: 3000,
+        });
+
+        navigate('/dashboard');
+      } else {
+        toast.update(pendingToast, {
+          render: 'Erro de login: Token não encontrado.',
+          type: 'error',
+          isLoading: false,
+          autoClose: 3000,
+        });
+      }
+    } catch (error) {
+      toast.update(pendingToast, {
+        render: 'Falha no login. Verifique suas credenciais.',
+        type: 'error',
+        isLoading: false,
+        autoClose: 3000,
+      });
+      console.error('Falha no login', error);
+    }
+  };
   return (
     <BasicLayout image={bgImage}>
       <Card>
@@ -51,10 +98,20 @@ function Basic() {
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
             <MDBox mb={2}>
-              <MDInput type="email" label="Email" fullWidth />
+              <MDInput
+                onChange={(e) => setUserLogin({ ...userLogin, dsEmail: e.target.value })}
+                type="email"
+                label="Email"
+                fullWidth
+              />
             </MDBox>
             <MDBox mb={2}>
-              <MDInput type="password" label="Password" fullWidth />
+              <MDInput
+                onChange={(e) => setUserLogin({ ...userLogin, dsSenha: e.target.value })}
+                type="password"
+                label="Password"
+                fullWidth
+              />
             </MDBox>
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Switch checked={rememberMe} onChange={handleSetRememberMe} />
@@ -69,7 +126,7 @@ function Basic() {
               </MDTypography>
             </MDBox>
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth>
+              <MDButton onClick={() => handleSignIn()} variant="gradient" color="info" fullWidth>
                 sign in
               </MDButton>
             </MDBox>
@@ -91,6 +148,7 @@ function Basic() {
           </MDBox>
         </MDBox>
       </Card>
+      <ToastContainer />
     </BasicLayout>
   );
 }

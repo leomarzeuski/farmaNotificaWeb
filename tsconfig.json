@@ -1,19 +1,21 @@
 {
-    "compilerOptions": {
-      "target": "es6",  
-      "module": "commonjs", 
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "baseUrl": "src",  
-      "paths": {
-        "components/*": ["components/*"],  
-        "helpers/*": ["helpers/*"],        
-        "assets/*": ["assets/*"]     
-      }
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["components/*"],
+      "services/*": ["services/*"],
+      "layouts/*": ["layouts/*"],
+      "helpers/*": ["helpers/*"],
+      "assets/*": ["assets/*"]
     },
-    "include": ["src"],
-    "exclude": ["node_modules"]
-  }
-  
+    "jsx": "react-jsx"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

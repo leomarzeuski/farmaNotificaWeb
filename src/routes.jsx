@@ -10,11 +10,12 @@ import Icon from '@mui/material/Icon';
 const routes = [
   {
     type: 'collapse',
-    name: 'Profile',
+    name: 'Perfil',
     key: 'profile',
     icon: <Icon fontSize="small">person</Icon>,
     route: '/profile',
     component: <Profile />,
+    protected: true,
   },
   {
     type: 'collapse',
@@ -23,30 +24,34 @@ const routes = [
     icon: <Icon fontSize="small">dashboard</Icon>,
     route: '/dashboard',
     component: <Dashboard />,
+    protected: true,
   },
   {
     type: 'collapse',
-    name: 'Tables',
+    name: 'Solicitações',
     key: 'tables',
     icon: <Icon fontSize="small">table_view</Icon>,
     route: '/tables',
     component: <Tables />,
+    protected: true,
   },
   {
     type: 'collapse',
-    name: 'Sign In',
+    name: 'Login',
     key: 'sign-in',
     icon: <Icon fontSize="small">login</Icon>,
     route: '/authentication/sign-in',
     component: <SignIn />,
+    protected: false,
   },
   {
     type: 'collapse',
-    name: 'Sign Up',
+    name: 'Cadastro',
     key: 'sign-up',
     icon: <Icon fontSize="small">assignment</Icon>,
     route: '/authentication/sign-up',
     component: <SignUp />,
+    protected: false,
   },
 ];
 

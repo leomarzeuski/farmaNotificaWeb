@@ -27,8 +27,13 @@ import team1 from 'assets/images/profile.jpeg';
 import team2 from 'assets/images/profile.jpeg';
 import team3 from 'assets/images/profile.jpeg';
 import team4 from 'assets/images/profile.jpeg';
+import { useAuth } from '../../context/auth';
 
 function Overview() {
+  const { user } = useAuth();
+
+  console.log({ user });
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
