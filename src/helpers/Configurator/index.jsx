@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 // @mui material components
-import Divider from "@mui/material/Divider";
-import Icon from "@mui/material/Icon";
-import IconButton from "@mui/material/IconButton";
-import Switch from "@mui/material/Switch";
+import Divider from '@mui/material/Divider';
+import Icon from '@mui/material/Icon';
+import IconButton from '@mui/material/IconButton';
+import Switch from '@mui/material/Switch';
 
-import MDBox from "components/MDBox";
-import MDButton from "components/MDButton";
-import MDTypography from "components/MDTypography";
+import MDBox from 'components/MDBox';
+import MDButton from 'components/MDButton';
+import MDTypography from 'components/MDTypography';
 
 // Custom styles for the Configurator
-import ConfiguratorRoot from "helpers/Configurator/ConfiguratorRoot";
+import ConfiguratorRoot from 'helpers/Configurator/ConfiguratorRoot';
 
 // Material Dashboard 2 React context
 import {
@@ -22,7 +22,7 @@ import {
   setTransparentSidenav,
   setWhiteSidenav,
   useMaterialUIController,
-} from "context";
+} from 'context';
 
 function Configurator() {
   const [controller, dispatch] = useMaterialUIController();
@@ -35,7 +35,7 @@ function Configurator() {
     darkMode,
   } = controller;
   const [disabled, setDisabled] = useState(false);
-  const sidenavColors = ["primary", "dark", "info", "success", "warning", "error"];
+  const sidenavColors = ['primary', 'dark', 'info', 'success', 'warning', 'error'];
 
   // Use the useEffect hook to change the button state for the sidenav type based on window size.
   useEffect(() => {
@@ -45,13 +45,13 @@ function Configurator() {
     }
 
     // The event listener that's calling the handleDisabled function when resizing the window.
-    window.addEventListener("resize", handleDisabled);
+    window.addEventListener('resize', handleDisabled);
 
     // Call the handleDisabled function to set the state with the initial value.
     handleDisabled();
 
     // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleDisabled);
+    return () => window.removeEventListener('resize', handleDisabled);
   }, []);
 
   const handleCloseConfigurator = () => setOpenConfigurator(dispatch, false);
@@ -81,7 +81,7 @@ function Configurator() {
     color: darkMode ? white.main : dark.main,
     border: `${borderWidth[1]} solid ${darkMode ? white.main : dark.main}`,
 
-    "&:hover, &:focus, &:focus:not(:hover)": {
+    '&:hover, &:focus, &:focus:not(:hover)': {
       background: darkMode ? background.sidenav : white.main,
       color: darkMode ? white.main : dark.main,
       border: `${borderWidth[1]} solid ${darkMode ? white.main : dark.main}`,
@@ -97,7 +97,7 @@ function Configurator() {
     background: darkMode ? white.main : linearGradient(gradients.dark.main, gradients.dark.state),
     color: darkMode ? background.sidenav : white.main,
 
-    "&:hover, &:focus, &:focus:not(:hover)": {
+    '&:hover, &:focus, &:focus:not(:hover)': {
       background: darkMode ? white.main : linearGradient(gradients.dark.main, gradients.dark.state),
       color: darkMode ? background.sidenav : white.main,
     },
@@ -124,10 +124,10 @@ function Configurator() {
           sx={({ typography: { size }, palette: { dark, white } }) => ({
             fontSize: `${size.lg} !important`,
             color: darkMode ? white.main : dark.main,
-            stroke: "currentColor",
-            strokeWidth: "2px",
-            cursor: "pointer",
-            transform: "translateY(5px)",
+            stroke: 'currentColor',
+            strokeWidth: '2px',
+            cursor: 'pointer',
+            transform: 'translateY(5px)',
           })}
           onClick={handleCloseConfigurator}
         >
@@ -150,8 +150,8 @@ function Configurator() {
                   palette: { white, dark, background },
                   transitions,
                 }) => ({
-                  width: "24px",
-                  height: "24px",
+                  width: '24px',
+                  height: '24px',
                   padding: 0,
                   border: `${borderWidth[1]} solid ${darkMode ? background.sidenav : white.main}`,
                   borderColor: () => {
@@ -163,18 +163,18 @@ function Configurator() {
 
                     return borderColorValue;
                   },
-                  transition: transitions.create("border-color", {
+                  transition: transitions.create('border-color', {
                     easing: transitions.easing.sharp,
                     duration: transitions.duration.shorter,
                   }),
                   backgroundImage: ({ functions: { linearGradient }, palette: { gradients } }) =>
                     linearGradient(gradients[color].main, gradients[color].state),
 
-                  "&:not(:last-child)": {
+                  '&:not(:last-child)': {
                     mr: 1,
                   },
 
-                  "&:hover, &:focus, &:active": {
+                  '&:hover, &:focus, &:active': {
                     borderColor: darkMode ? white.main : dark.main,
                   },
                 })}
@@ -192,7 +192,7 @@ function Configurator() {
 
           <MDBox
             sx={{
-              display: "flex",
+              display: 'flex',
               mt: 2,
               mr: 1,
             }}
@@ -211,7 +211,7 @@ function Configurator() {
             >
               Escuro
             </MDButton>
-            <MDBox sx={{ mx: 1, width: "8rem", minWidth: "8rem" }}>
+            <MDBox sx={{ mx: 1, width: '8rem', minWidth: '8rem' }}>
               <MDButton
                 color="dark"
                 variant="gradient"

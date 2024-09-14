@@ -1,14 +1,14 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // @mui material components
-import Link from "@mui/material/Link";
-import Icon from "@mui/material/Icon";
+import Link from '@mui/material/Link';
+import Icon from '@mui/material/Icon';
 
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
+import MDBox from 'components/MDBox';
+import MDTypography from 'components/MDTypography';
 
 // Material Dashboard 2 React base styles
-import typography from "assets/theme/base/typography";
+import typography from 'assets/theme/base/typography';
 
 function Footer({ company, links }) {
   const { href, name } = company;
@@ -29,7 +29,7 @@ function Footer({ company, links }) {
     <MDBox
       width="100%"
       display="flex"
-      flexDirection={{ xs: "column", lg: "row" }}
+      flexDirection={{ xs: 'column', lg: 'row' }}
       justifyContent="space-between"
       alignItems="center"
       px={1.5}
@@ -51,8 +51,8 @@ function Footer({ company, links }) {
 
 // Setting default values for the props of Footer
 Footer.defaultProps = {
-  company: { href: "", name: "FarmaNotifica - Todos os direitos reservados" },
-  links: [{ href: "", name: "FarmaNotifica - Todos os direitos reservados" }],
+  company: { href: '', name: 'FarmaNotifica - Todos os direitos reservados' },
+  links: [{ href: '', name: 'FarmaNotifica - Todos os direitos reservados' }],
 };
 
 // Typechecking props for the Footer

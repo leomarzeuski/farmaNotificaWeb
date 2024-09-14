@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
-import Tooltip from "@mui/material/Tooltip";
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-import MDAvatar from "components/MDAvatar";
-import MDProgress from "components/MDProgress";
+import Tooltip from '@mui/material/Tooltip';
+import MDBox from 'components/MDBox';
+import MDTypography from 'components/MDTypography';
+import MDAvatar from 'components/MDAvatar';
+import MDProgress from 'components/MDProgress';
 
-import logoDrogaRaia from "assets/images/logo-droga-raia.png";
-import logoDrogasil from "assets/images/logo-drogasil.png";
-import logoPacheco from "assets/images/logo-droga-raia.png";
-import logoSãoJoão from "assets/images/logo-drogasil.png";
-import logoUltrafarma from "assets/images/logo-droga-raia.png";
-import logoPanvel from "assets/images/logo-drogasil.png";
-import team1 from "assets/images/logo-droga-raia.png";
-import team2 from "assets/images/logo-drogasil.png";
-import team3 from "assets/images/logo-droga-raia.png";
-import team4 from "assets/images/logo-drogasil.png";
+import logoDrogaRaia from 'assets/images/logo-droga-raia.png';
+import logoDrogasil from 'assets/images/logo-drogasil.png';
+import logoPacheco from 'assets/images/logo-droga-raia.png';
+import logoSãoJoão from 'assets/images/logo-drogasil.png';
+import logoUltrafarma from 'assets/images/logo-droga-raia.png';
+import logoPanvel from 'assets/images/logo-drogasil.png';
+import team1 from 'assets/images/logo-droga-raia.png';
+import team2 from 'assets/images/logo-drogasil.png';
+import team3 from 'assets/images/logo-droga-raia.png';
+import team4 from 'assets/images/logo-drogasil.png';
 
 export default function data() {
   const avatars = (members) =>
@@ -27,15 +27,15 @@ export default function data() {
           sx={{
             border: ({ borders: { borderWidth }, palette: { white } }) =>
               `${borderWidth[2]} solid ${white.main}`,
-            cursor: "pointer",
-            position: "relative",
+            cursor: 'pointer',
+            position: 'relative',
 
-            "&:not(:first-of-type)": {
+            '&:not(:first-of-type)': {
               ml: -1.25,
             },
 
-            "&:hover, &:focus": {
-              zIndex: "10",
+            '&:hover, &:focus': {
+              zIndex: '10',
             },
           }}
         />
@@ -53,10 +53,10 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "farmácias", accessor: "farmacias", width: "45%", align: "left" },
-      { Header: "membros", accessor: "membros", width: "10%", align: "left" },
-      { Header: "orçamento", accessor: "orcamento", align: "center" },
-      { Header: "progresso", accessor: "progresso", align: "center" },
+      { Header: 'farmácias', accessor: 'farmacias', width: '45%', align: 'left' },
+      { Header: 'membros', accessor: 'membros', width: '10%', align: 'left' },
+      { Header: 'orçamento', accessor: 'orcamento', align: 'center' },
+      { Header: 'progresso', accessor: 'progresso', align: 'center' },
     ],
 
     rows: [
@@ -65,10 +65,10 @@ export default function data() {
         membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team1, "João Silva"],
-              [team2, "Maria Oliveira"],
-              [team3, "Carlos Souza"],
-              [team4, "Ana Santos"],
+              [team1, 'João Silva'],
+              [team2, 'Maria Oliveira'],
+              [team3, 'Carlos Souza'],
+              [team4, 'Ana Santos'],
             ])}
           </MDBox>
         ),
@@ -88,8 +88,8 @@ export default function data() {
         membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team2, "Maria Oliveira"],
-              [team4, "Ana Santos"],
+              [team2, 'Maria Oliveira'],
+              [team4, 'Ana Santos'],
             ])}
           </MDBox>
         ),
@@ -109,8 +109,8 @@ export default function data() {
         membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team1, "João Silva"],
-              [team3, "Carlos Souza"],
+              [team1, 'João Silva'],
+              [team3, 'Carlos Souza'],
             ])}
           </MDBox>
         ),
@@ -130,10 +130,10 @@ export default function data() {
         membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team4, "Ana Santos"],
-              [team3, "Carlos Souza"],
-              [team2, "Maria Oliveira"],
-              [team1, "João Silva"],
+              [team4, 'Ana Santos'],
+              [team3, 'Carlos Souza'],
+              [team2, 'Maria Oliveira'],
+              [team1, 'João Silva'],
             ])}
           </MDBox>
         ),
@@ -152,7 +152,7 @@ export default function data() {
         farmacias: <Company image={logoUltrafarma} name="Ultrafarma" />,
         membros: (
           <MDBox display="flex" py={1}>
-            {avatars([[team4, "Ana Santos"]])}
+            {avatars([[team4, 'Ana Santos']])}
           </MDBox>
         ),
         orcamento: (
@@ -171,8 +171,8 @@ export default function data() {
         membros: (
           <MDBox display="flex" py={1}>
             {avatars([
-              [team1, "João Silva"],
-              [team4, "Ana Santos"],
+              [team1, 'João Silva'],
+              [team4, 'Ana Santos'],
             ])}
           </MDBox>
         ),

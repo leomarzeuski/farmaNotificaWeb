@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 // @material-ui core components
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import Icon from "@mui/material/Icon";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import Icon from '@mui/material/Icon';
 
-import MDBox from "components/MDBox";
-import MDInput from "components/MDInput";
+import MDBox from 'components/MDBox';
+import MDInput from 'components/MDInput';
 
 // Material Dashboard 2 React example components
-import Breadcrumbs from "helpers/Breadcrumbs";
-import NotificationItem from "helpers/Items/NotificationItem";
+import Breadcrumbs from 'helpers/Breadcrumbs';
+import NotificationItem from 'helpers/Items/NotificationItem';
 
 // Custom styles for DashboardNavbar
 import {
@@ -22,7 +22,7 @@ import {
   navbarRow,
   navbarIconButton,
   navbarMobileMenu,
-} from "helpers/Navbars/DashboardNavbar/styles";
+} from 'helpers/Navbars/DashboardNavbar/styles';
 
 // Material Dashboard 2 React context
 import {
@@ -30,21 +30,21 @@ import {
   setTransparentNavbar,
   setMiniSidenav,
   setOpenConfigurator,
-} from "context";
+} from 'context';
 
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
   const [controller, dispatch] = useMaterialUIController();
   const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator, darkMode } = controller;
   const [openMenu, setOpenMenu] = useState(false);
-  const route = useLocation().pathname.split("/").slice(1);
+  const route = useLocation().pathname.split('/').slice(1);
 
   useEffect(() => {
     // Setting the navbar type
     if (fixedNavbar) {
-      setNavbarType("sticky");
+      setNavbarType('sticky');
     } else {
-      setNavbarType("static");
+      setNavbarType('static');
     }
 
     // A function that sets the transparent state of the navbar.
@@ -52,13 +52,13 @@ function DashboardNavbar({ absolute, light, isMini }) {
       setTransparentNavbar(dispatch, (fixedNavbar && window.scrollY === 0) || !fixedNavbar);
     }
 
-    window.addEventListener("scroll", handleTransparentNavbar);
+    window.addEventListener('scroll', handleTransparentNavbar);
 
     // Call the handleTransparentNavbar function to set the state with the initial value.
     handleTransparentNavbar();
 
     // Remove event listener on cleanup
-    return () => window.removeEventListener("scroll", handleTransparentNavbar);
+    return () => window.removeEventListener('scroll', handleTransparentNavbar);
   }, [dispatch, fixedNavbar]);
 
   const handleMiniSidenav = () => setMiniSidenav(dispatch, !miniSidenav);
@@ -72,14 +72,14 @@ function DashboardNavbar({ absolute, light, isMini }) {
       anchorEl={openMenu}
       anchorReference={null}
       anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "left",
+        vertical: 'bottom',
+        horizontal: 'left',
       }}
       open={Boolean(openMenu)}
       onClose={handleCloseMenu}
       sx={{ mt: 2 }}
     >
-      <NotificationItem icon={<Icon>email</Icon>} title="Novos Agendamentos" />
+      <NotificationItem icon={<Icon>email</Icon>} title="Novas solicitações" />
     </Menu>
   );
 
@@ -98,7 +98,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
 
   return (
     <AppBar
-      position={absolute ? "absolute" : navbarType}
+      position={absolute ? 'absolute' : navbarType}
       color="inherit"
       sx={(theme) => navbar(theme, { transparentNavbar, absolute, light, darkMode })}
     >
@@ -108,8 +108,8 @@ function DashboardNavbar({ absolute, light, isMini }) {
         </MDBox>
         {isMini ? null : (
           <MDBox sx={(theme) => navbarRow(theme, { isMini })}>
-            <MDBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in/basic">
+            <MDBox color={light ? 'white' : 'inherit'}>
+              <Link to="/profile">
                 <IconButton sx={navbarIconButton} size="small" disableRipple>
                   <Icon sx={iconsStyle}>account_circle</Icon>
                 </IconButton>
@@ -122,7 +122,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 onClick={handleMiniSidenav}
               >
                 <Icon sx={iconsStyle} fontSize="medium">
-                  {miniSidenav ? "menu_open" : "menu"}
+                  {miniSidenav ? 'menu_open' : 'menu'}
                 </Icon>
               </IconButton>
               <IconButton

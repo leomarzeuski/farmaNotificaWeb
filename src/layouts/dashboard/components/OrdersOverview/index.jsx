@@ -1,16 +1,16 @@
 // @mui material components
-import Card from "@mui/material/Card";
-import Icon from "@mui/material/Icon";
+import Card from '@mui/material/Card';
+import Icon from '@mui/material/Icon';
 
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
+import MDBox from 'components/MDBox';
+import MDTypography from 'components/MDTypography';
 
 // Material Dashboard 2 React example components
-import TimelineItem from "helpers/Timeline/TimelineItem";
+import TimelineItem from 'helpers/Timeline/TimelineItem';
 
 function OrdersOverview() {
   return (
-    <Card sx={{ height: "100%" }}>
+    <Card sx={{ height: '100%' }}>
       <MDBox pt={3} px={3}>
         <MDTypography variant="h6" fontWeight="medium">
           Visão Geral das Vendas
@@ -23,7 +23,7 @@ function OrdersOverview() {
             &nbsp;
             <MDTypography variant="button" color="text" fontWeight="medium">
               24%
-            </MDTypography>{" "}
+            </MDTypography>{' '}
             este mês
           </MDTypography>
         </MDBox>

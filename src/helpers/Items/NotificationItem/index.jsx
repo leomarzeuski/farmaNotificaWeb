@@ -13,20 +13,21 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { forwardRef } from "react";
+import { forwardRef } from 'react';
 
 // prop-types is a library for typechecking of props.
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // @mui material components
-import MenuItem from "@mui/material/MenuItem";
-import Link from "@mui/material/Link";
+import MenuItem from '@mui/material/MenuItem';
+import Link from '@mui/material/Link';
 
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
+import MDBox from 'components/MDBox';
+import MDTypography from 'components/MDTypography';
 
 // custom styles for the NotificationItem
-import menuItem from "helpers/Items/NotificationItem/styles";
+import menuItem from 'helpers/Items/NotificationItem/styles';
+import { Link as RLink } from 'react-router-dom';
 
 const NotificationItem = forwardRef(({ icon, title, ...rest }, ref) => (
   <MenuItem {...rest} ref={ref} sx={(theme) => menuItem(theme)}>
@@ -34,7 +35,13 @@ const NotificationItem = forwardRef(({ icon, title, ...rest }, ref) => (
       <MDTypography variant="body1" color="secondary" lineHeight={0.75}>
         {icon}
       </MDTypography>
-      <MDTypography variant="button" fontWeight="regular" sx={{ ml: 1 }}>
+      <MDTypography
+        variant="button"
+        fontWeight="regular"
+        sx={{ ml: 1 }}
+        component={RLink}
+        to="/tables"
+      >
         {title}
       </MDTypography>
     </MDBox>

@@ -14,15 +14,15 @@ Coded by www.creative-tim.com
 */
 
 // prop-types is a library for typechecking of props.
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // @mui material components
-import Menu from "@mui/material/Menu";
+import Menu from '@mui/material/Menu';
 
-import MDBox from "components/MDBox";
+import MDBox from 'components/MDBox';
 
 // Material Dashboard 2 React example components
-import DefaultNavbarLink from "helpers/Navbars/DefaultNavbar/DefaultNavbarLink";
+import DefaultNavbarLink from 'helpers/Navbars/DefaultNavbar/DefaultNavbarLink';
 
 function DefaultNavbarMobile({ open, close }) {
   const { width } = open && open.getBoundingClientRect();
@@ -31,12 +31,12 @@ function DefaultNavbarMobile({ open, close }) {
     <Menu
       getContentAnchorEl={null}
       anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "center",
+        vertical: 'bottom',
+        horizontal: 'center',
       }}
       transformOrigin={{
-        vertical: "top",
-        horizontal: "center",
+        vertical: 'top',
+        horizontal: 'center',
       }}
       anchorEl={open}
       open={Boolean(open)}

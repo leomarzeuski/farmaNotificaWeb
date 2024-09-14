@@ -1,21 +1,21 @@
-import Grid from "@mui/material/Grid";
+import Grid from '@mui/material/Grid';
 
-import MDBox from "components/MDBox";
+import MDBox from 'components/MDBox';
 
-import DashboardLayout from "helpers/LayoutContainers/DashboardLayout";
-import DashboardNavbar from "helpers/Navbars/DashboardNavbar";
-import Footer from "helpers/Footer";
-import ReportsBarChart from "helpers/Charts/BarCharts/ReportsBarChart";
-import ReportsLineChart from "helpers/Charts/LineCharts/ReportsLineChart";
-import ComplexStatisticsCard from "helpers/Cards/StatisticsCards/ComplexStatisticsCard";
+import DashboardLayout from 'helpers/LayoutContainers/DashboardLayout';
+import DashboardNavbar from 'helpers/Navbars/DashboardNavbar';
+import Footer from 'helpers/Footer';
+import ReportsBarChart from 'helpers/Charts/BarCharts/ReportsBarChart';
+import ReportsLineChart from 'helpers/Charts/LineCharts/ReportsLineChart';
+import ComplexStatisticsCard from 'helpers/Cards/StatisticsCards/ComplexStatisticsCard';
 
 // Data
-import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
-import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
+import reportsBarChartData from 'layouts/dashboard/data/reportsBarChartData';
+import reportsLineChartData from 'layouts/dashboard/data/reportsLineChartData';
 
 // Dashboard components
-import Projects from "layouts/dashboard/components/Projects";
-import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
+import Projects from 'layouts/dashboard/components/Projects';
+import OrdersOverview from 'layouts/dashboard/components/OrdersOverview';
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
@@ -33,9 +33,9 @@ function Dashboard() {
                 title="Consultas"
                 count={281}
                 percentage={{
-                  color: "success",
-                  amount: "+55%",
-                  label: "em relação à semana passada",
+                  color: 'success',
+                  amount: '+55%',
+                  label: 'em relação à semana passada',
                 }}
               />
             </MDBox>
@@ -47,9 +47,9 @@ function Dashboard() {
                 title="Usuários Hoje"
                 count="2.300"
                 percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "em relação ao mês passado",
+                  color: 'success',
+                  amount: '+3%',
+                  label: 'em relação ao mês passado',
                 }}
               />
             </MDBox>
@@ -62,9 +62,9 @@ function Dashboard() {
                 title="Faturamento"
                 count="34 mil"
                 percentage={{
-                  color: "success",
-                  amount: "+1%",
-                  label: "em relação a ontem",
+                  color: 'success',
+                  amount: '+1%',
+                  label: 'em relação a ontem',
                 }}
               />
             </MDBox>
@@ -77,9 +77,9 @@ function Dashboard() {
                 title="Novos Seguidores"
                 count="+91"
                 percentage={{
-                  color: "success",
-                  amount: "",
-                  label: "Atualizado recentemente",
+                  color: 'success',
+                  amount: '',
+                  label: 'Atualizado recentemente',
                 }}
               />
             </MDBox>

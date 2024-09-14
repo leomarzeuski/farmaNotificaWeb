@@ -3,6 +3,7 @@ import api from '../api';
 
 const createUser = async (pessoa: Partial<User>) => {
   try {
+    console.log(pessoa);
     const response = await api.post('/Pessoa', pessoa);
     return response.data;
   } catch (error) {
@@ -14,6 +15,18 @@ const createUser = async (pessoa: Partial<User>) => {
 const getUserById = async (id: number) => {
   try {
     const response = await api.get(`/Pessoa/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching user', error);
+    throw error;
+  }
+};
+
+const getUserByEmailSenha = async (dsEmail: string, dsSenha: string) => {
+  try {
+    const response = await api.get(`/LoginPessoa`, {
+      params: { dsEmail, dsSenha },
+    });
     return response.data;
   } catch (error) {
     console.error('Error fetching user', error);
@@ -44,6 +57,7 @@ const deleteUser = async (id: number) => {
 export default {
   createUser,
   getUserById,
+  getUserByEmailSenha,
   updateUser,
   deleteUser,
 };
