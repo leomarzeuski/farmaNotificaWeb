@@ -46,7 +46,7 @@ function Overview() {
             </Grid>
             <Grid item xs={12} md={6} xl={4} sx={{ display: 'flex' }}>
               <Divider orientation="vertical" sx={{ ml: -2, mr: 1 }} />
-              <ProfileInfoCard
+              {/* <ProfileInfoCard
                 title="Informações do Perfil"
                 description="Olá, eu sou Dr. João Silva, farmacêutico responsável. Nosso objetivo é fornecer os melhores medicamentos e atendimento de qualidade para todos os nossos clientes."
                 info={{
@@ -74,15 +74,8 @@ function Overview() {
                 ]}
                 action={{ route: '', tooltip: 'Editar Perfil' }}
                 shadow={false}
-              />
+              /> */}
               <Divider orientation="vertical" sx={{ mx: 0 }} />
-            </Grid>
-            <Grid item xs={12} xl={4}>
-              <ProfilesList
-                title="Conversa com Clientes"
-                profiles={profilesListData}
-                shadow={false}
-              />
             </Grid>
           </Grid>
         </MDBox>

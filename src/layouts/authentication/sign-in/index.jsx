@@ -44,10 +44,13 @@ function Basic() {
 
       if (token && response) {
         login(response);
+        const userString = JSON.stringify(response);
         if (rememberMe) {
           localStorage.setItem('authToken', token);
+          localStorage.setItem('user', userString);
         } else {
           sessionStorage.setItem('authToken', token);
+          sessionStorage.setItem('user', userString);
         }
 
         toast.update(pendingToast, {
