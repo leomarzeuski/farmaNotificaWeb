@@ -1,0 +1,8 @@
+.table-row-hover {
+    transition: background-color 0.3s ease;
+  }
+  
+  .table-row-hover:hover {
+    background-color: rgba(0, 0, 0, 0.1),
+  }
+  

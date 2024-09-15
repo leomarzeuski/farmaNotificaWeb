@@ -27,6 +27,7 @@ import MDTypography from 'components/MDTypography';
 
 // custom styles for the NotificationItem
 import menuItem from 'helpers/Items/NotificationItem/styles';
+import { Link as RLink } from 'react-router-dom';
 
 const NotificationItem = forwardRef(({ icon, title, ...rest }, ref) => (
   <MenuItem {...rest} ref={ref} sx={(theme) => menuItem(theme)}>
@@ -34,7 +35,13 @@ const NotificationItem = forwardRef(({ icon, title, ...rest }, ref) => (
       <MDTypography variant="body1" color="secondary" lineHeight={0.75}>
         {icon}
       </MDTypography>
-      <MDTypography variant="button" fontWeight="regular" sx={{ ml: 1 }}>
+      <MDTypography
+        variant="button"
+        fontWeight="regular"
+        sx={{ ml: 1 }}
+        component={RLink}
+        to="/tables"
+      >
         {title}
       </MDTypography>
     </MDBox>

@@ -27,8 +27,13 @@ import team1 from 'assets/images/profile.jpeg';
 import team2 from 'assets/images/profile.jpeg';
 import team3 from 'assets/images/profile.jpeg';
 import team4 from 'assets/images/profile.jpeg';
+import { useAuth } from '../../context/auth';
 
 function Overview() {
+  const { user } = useAuth();
+
+  console.log({ user });
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -41,7 +46,7 @@ function Overview() {
             </Grid>
             <Grid item xs={12} md={6} xl={4} sx={{ display: 'flex' }}>
               <Divider orientation="vertical" sx={{ ml: -2, mr: 1 }} />
-              <ProfileInfoCard
+              {/* <ProfileInfoCard
                 title="Informações do Perfil"
                 description="Olá, eu sou Dr. João Silva, farmacêutico responsável. Nosso objetivo é fornecer os melhores medicamentos e atendimento de qualidade para todos os nossos clientes."
                 info={{
@@ -69,15 +74,8 @@ function Overview() {
                 ]}
                 action={{ route: '', tooltip: 'Editar Perfil' }}
                 shadow={false}
-              />
+              /> */}
               <Divider orientation="vertical" sx={{ mx: 0 }} />
-            </Grid>
-            <Grid item xs={12} xl={4}>
-              <ProfilesList
-                title="Conversa com Clientes"
-                profiles={profilesListData}
-                shadow={false}
-              />
             </Grid>
           </Grid>
         </MDBox>
