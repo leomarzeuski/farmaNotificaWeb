@@ -19,14 +19,13 @@ function Header({ children }) {
   const [userData, setUserData] = useState({
     nome: '',
     email: '',
-    senha: '', // Adicionando senha
+    senha: '',
   });
-  const [profileImage, setProfileImage] = useState(defaultProfile); // Imagem do perfil
+  const [profileImage, setProfileImage] = useState(defaultProfile);
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Fetch user data from localStorage or sessionStorage
     const userString = localStorage.getItem('user') || sessionStorage.getItem('user');
     const storedImage = localStorage.getItem('profileImage');
     if (userString) {
@@ -34,14 +33,13 @@ function Header({ children }) {
       setUserData({
         nome: user.dsNome || '',
         email: user.dsEmail || '',
-        senha: '', // Senha não será exibida
+        senha: '',
       });
     }
     if (storedImage) {
-      setProfileImage(storedImage); // Carrega a imagem de perfil do localStorage, se houver
+      setProfileImage(storedImage);
     }
 
-    // Handle responsive orientation of tabs
     function handleTabsOrientation() {
       return window.innerWidth < 960
         ? setTabsOrientation('vertical')
@@ -66,8 +64,8 @@ function Header({ children }) {
     const reader = new FileReader();
     reader.onloadend = () => {
       const base64String = reader.result;
-      setProfileImage(base64String); // Atualiza a imagem de perfil com base64
-      localStorage.setItem('profileImage', base64String); // Salva a imagem no localStorage
+      setProfileImage(base64String);
+      localStorage.setItem('profileImage', base64String);
     };
     if (file) {
       reader.readAsDataURL(file);
@@ -137,18 +135,18 @@ function Header({ children }) {
           <Grid item>
             <label htmlFor="profileImageUpload">
               <MDAvatar
-                src={profileImage} // Mostra a imagem de perfil, se disponível
+                src={profileImage}
                 alt="profile-image"
                 size="xl"
                 shadow="sm"
-                sx={{ cursor: 'pointer' }} // Torna a imagem clicável
+                sx={{ cursor: 'pointer' }}
               />
               <input
                 id="profileImageUpload"
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
-                style={{ display: 'none' }} // Esconde o input
+                style={{ display: 'none' }}
               />
             </label>
           </Grid>
