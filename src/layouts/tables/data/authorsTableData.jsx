@@ -23,7 +23,6 @@ import {
   getSolicitacoes,
   alterarStatusSolicitacao,
 } from '../../../services/solicitacoes/solicitacaoService';
-
 import './table.css';
 
 const statusOptions = [
@@ -37,45 +36,25 @@ const statusOptions = [
 function TableSolicitation() {
   const [loading, setLoading] = useState(true);
   const [solicitacoes, setSolicitacoes] = useState([]);
-  const [filteredSolicitacoes, setFilteredSolicitacoes] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [openModal, setOpenModal] = useState(false);
   const [selectedSolicitacao, setSelectedSolicitacao] = useState(null);
   const [checked, setChecked] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState('');
-  const [modalMessage, setModalMessage] = useState('');
-
-  const fetchSolicitacoes = async () => {
-    try {
-      const response = await getSolicitacoes();
-      setSolicitacoes(response);
-      setFilteredSolicitacoes(response);
-    } catch (error) {
-      console.error('Error fetching solicitacoes', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   useEffect(() => {
     fetchSolicitacoes();
   }, []);
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case 'Em análise':
-        return 'warning';
-      case 'Reenviar':
-        return 'info';
-      case 'Agendar':
-        return 'primary';
-      case 'Retirado':
-        return 'success';
-      case 'Fora do Prazo':
-        return 'error';
-      default:
-        return 'secondary';
+  const fetchSolicitacoes = async () => {
+    try {
+      const response = await getSolicitacoes();
+      setSolicitacoes(response);
+    } catch (error) {
+      console.error('Error fetching solicitacoes', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -90,15 +69,6 @@ function TableSolicitation() {
 
   const handleRowClick = (solicitacao) => {
     setSelectedSolicitacao(solicitacao);
-    if (
-      solicitacao.cdStatusNavigation.dsStatus === 'Retirado' ||
-      solicitacao.cdStatusNavigation.dsStatus === 'Agendar'
-    ) {
-      setModalMessage(`Aguardando resposta do cliente ${solicitacao.cdPessoaNavigation.dsNome}`);
-    } else {
-      setModalMessage('');
-    }
-
     setOpenModal(true);
   };
 
@@ -122,7 +92,6 @@ function TableSolicitation() {
 
     try {
       const response = await alterarStatusSolicitacao(solicitacao);
-
       if (response.status === 200) {
         fetchSolicitacoes();
         setOpenModal(false);
@@ -139,7 +108,23 @@ function TableSolicitation() {
     setOpenModal(false);
     setChecked(false);
     setSelectedStatus('');
-    setModalMessage('');
+  };
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'Em análise':
+        return 'warning';
+      case 'Reenviar':
+        return 'info';
+      case 'Agendar':
+        return 'primary';
+      case 'Retirado':
+        return 'success';
+      case 'Fora do Prazo':
+        return 'error';
+      default:
+        return 'secondary';
+    }
   };
 
   return (
@@ -191,57 +176,52 @@ function TableSolicitation() {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {filteredSolicitacoes
+                        {solicitacoes
                           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                          .map((solicitacao) => {
-                            const {
-                              cdPessoaNavigation,
-                              cdStatusNavigation,
-                              dtSolicitacao,
-                              fnSolicitacaoItens,
-                            } = solicitacao;
-
-                            return (
-                              <TableRow
-                                key={solicitacao.cdSolicitacao}
-                                className="table-row-hover"
-                                onClick={() => handleRowClick(solicitacao)}
-                                style={{ cursor: 'pointer' }}
-                              >
-                                <TableCell align="left">{cdPessoaNavigation.dsNome}</TableCell>
-                                <TableCell align="center">
-                                  <MDBadge
-                                    badgeContent={
-                                      <Typography variant="caption">
-                                        {cdStatusNavigation.dsStatus}
-                                      </Typography>
-                                    }
-                                    color={getStatusColor(cdStatusNavigation.dsStatus)}
-                                    variant="gradient"
-                                    size="lg"
-                                  />
-                                </TableCell>
-                                <TableCell align="center">
-                                  {new Date(dtSolicitacao).toLocaleDateString()}
-                                </TableCell>
-                                <TableCell align="center">
-                                  <MDTypography
-                                    component="a"
-                                    href={
-                                      fnSolicitacaoItens[0]?.cdUnidadeMedicamentoNavigation
-                                        ?.cdMedicamentoNavigation?.urlBula || '#'
-                                    }
-                                    variant="caption"
-                                    color="text"
-                                    fontWeight="medium"
-                                    target="_blank"
-                                  >
-                                    Baixar
-                                  </MDTypography>
-                                </TableCell>
-                              </TableRow>
-                            );
-                          })}
+                          .map((solicitacao) => (
+                            <TableRow
+                              key={solicitacao.cdSolicitacao}
+                              className="table-row-hover"
+                              onClick={() => handleRowClick(solicitacao)}
+                              style={{ cursor: 'pointer' }}
+                            >
+                              <TableCell align="left">
+                                {solicitacao.cdPessoaNavigation.dsNome}
+                              </TableCell>
+                              <TableCell align="center">
+                                <MDBadge
+                                  badgeContent={
+                                    <Typography variant="caption">
+                                      {solicitacao.cdStatusNavigation.dsStatus}
+                                    </Typography>
+                                  }
+                                  color={getStatusColor(solicitacao.cdStatusNavigation.dsStatus)}
+                                  variant="gradient"
+                                  size="lg"
+                                />
+                              </TableCell>
+                              <TableCell align="center">
+                                {new Date(solicitacao.dtSolicitacao).toLocaleDateString()}
+                              </TableCell>
+                              <TableCell align="center">
+                                <MDTypography
+                                  component="a"
+                                  href={
+                                    solicitacao.fnSolicitacaoItens[0]
+                                      ?.cdUnidadeMedicamentoNavigation?.cdMedicamentoNavigation
+                                      ?.urlBula || '#'
+                                  }
+                                  variant="caption"
+                                  color="text"
+                                  fontWeight="medium"
+                                  target="_blank"
+                                  style={{ zIndex: 10000 }}
+                                >
+                                  Baixar
+                                </MDTypography>
+                              </TableCell>
+                            </TableRow>
+                          ))}
                       </TableBody>
                     </Table>
                   </TableContainer>
@@ -249,7 +229,7 @@ function TableSolicitation() {
                   <TablePagination
                     rowsPerPageOptions={[10, 25, 50]}
                     component="div"
-                    count={filteredSolicitacoes.length}
+                    count={solicitacoes.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}
@@ -270,51 +250,118 @@ function TableSolicitation() {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            width: 400,
+            width: 600,
             bgcolor: 'background.paper',
             boxShadow: 24,
             p: 4,
             borderRadius: 2,
           }}
         >
-          <Typography variant="h6" mb={2}>
-            Mudar Status da Solicitação
-          </Typography>
-          {modalMessage && <Typography color="textSecondary">{modalMessage}</Typography>}
-          <FormControl fullWidth>
-            <Grid container alignItems="center" spacing={1} sx={{ flexDirection: 'row' }}>
-              <Grid item>
-                <Typography>O arquivo foi conferido?</Typography>
-              </Grid>
-              <Grid item>
-                <Checkbox
-                  checked={checked}
-                  onChange={handleCheckboxChange}
-                  label="O arquivo foi conferido?"
-                />
-              </Grid>
-            </Grid>
+          {selectedSolicitacao && (
+            <>
+              <Typography variant="h6" mb={2}>
+                Detalhes da Solicitação
+              </Typography>
+              <Typography variant="body1">
+                Nome: {selectedSolicitacao.cdPessoaNavigation.dsNome}
+              </Typography>
+              <Typography variant="body1">
+                Status: {selectedSolicitacao.cdStatusNavigation.dsStatus}
+              </Typography>
+              <Typography variant="body1">
+                Data de Solicitação:{' '}
+                {new Date(selectedSolicitacao.dtSolicitacao).toLocaleDateString()}
+              </Typography>
 
-            <FormControl fullWidth margin="normal" disabled={!checked}>
-              <InputLabel>Status</InputLabel>
-              <Select style={{ height: 45 }} value={selectedStatus} onChange={handleStatusChange}>
-                {statusOptions.map((option) => (
-                  <MenuItem key={option.cdStatus} value={option.cdStatus}>
-                    {option.dsStatus}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleConfirm}
-              disabled={!checked || !selectedStatus}
-              fullWidth
-            >
-              Confirmar
-            </Button>
-          </FormControl>
+              <Typography variant="h6" mt={2}>
+                Medicamentos Solicitados:
+              </Typography>
+              {selectedSolicitacao.fnSolicitacaoItens.map((item, index) => (
+                <Box key={index} mb={2}>
+                  {console.log({ item })}
+                  <Typography variant="body2">
+                    Medicamento:{' '}
+                    {item.cdUnidadeMedicamentoNavigation.cdMedicamentoNavigation.dsMedicamento}
+                  </Typography>
+                  <Typography variant="body2">
+                    Dosagem: {item.cdUnidadeMedicamentoNavigation.cdMedicamentoNavigation.dsDosagem}
+                  </Typography>
+                  <Typography variant="body2">
+                    Fabricante:{' '}
+                    {item.cdUnidadeMedicamentoNavigation.cdMedicamentoNavigation.dsFabricante}
+                  </Typography>
+                  <Typography variant="body2">
+                    <a
+                      href={item.cdUnidadeMedicamentoNavigation.cdMedicamentoNavigation.urlBula}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Ver Bula
+                    </a>
+                  </Typography>
+                </Box>
+              ))}
+
+              {/* Se houver anexos */}
+              {selectedSolicitacao.fnSolicitacaoAnexos.length > 0 && (
+                <>
+                  <Typography variant="h6" mt={2}>
+                    Anexos:
+                  </Typography>
+                  {selectedSolicitacao.fnSolicitacaoAnexos.map((anexo, index) => (
+                    <iframe
+                      key={index}
+                      src={anexo.urlDocumento}
+                      width="100%"
+                      height="300px"
+                      style={{ border: 'none', marginTop: '10px' }}
+                      title={`Anexo ${index}`}
+                    />
+                  ))}
+                </>
+              )}
+
+              <Box mt={3}>
+                <Typography variant="h6">Mudar Status da Solicitação</Typography>
+                <Grid container alignItems="center" spacing={1} sx={{ flexDirection: 'row' }}>
+                  <Grid item>
+                    <Typography>O arquivo foi conferido?</Typography>
+                  </Grid>
+                  <Grid item>
+                    <Checkbox
+                      checked={checked}
+                      onChange={handleCheckboxChange}
+                      label="O arquivo foi conferido?"
+                    />
+                  </Grid>
+                </Grid>
+
+                <FormControl fullWidth margin="normal" disabled={!checked}>
+                  <InputLabel>Status</InputLabel>
+                  <Select
+                    style={{ height: 45 }}
+                    value={selectedStatus}
+                    onChange={handleStatusChange}
+                  >
+                    {statusOptions.map((option) => (
+                      <MenuItem key={option.cdStatus} value={option.cdStatus}>
+                        {option.dsStatus}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleConfirm}
+                  disabled={!checked || !selectedStatus}
+                  fullWidth
+                >
+                  Confirmar
+                </Button>
+              </Box>
+            </>
+          )}
         </Box>
       </Modal>
     </MDBox>
