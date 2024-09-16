@@ -278,7 +278,6 @@ function TableSolicitation() {
               </Typography>
               {selectedSolicitacao.fnSolicitacaoItens.map((item, index) => (
                 <Box key={index} mb={2}>
-                  {console.log({ item })}
                   <Typography variant="body2">
                     Medicamento:{' '}
                     {item.cdUnidadeMedicamentoNavigation.cdMedicamentoNavigation.dsMedicamento}
