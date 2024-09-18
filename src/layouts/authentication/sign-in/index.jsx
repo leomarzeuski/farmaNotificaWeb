@@ -36,7 +36,7 @@ function Basic() {
 
   const handleSignIn = async () => {
     try {
-      const pendingToast = toast.loading('Fazendo login, por favor aguarde...');
+      const pendingToastId = toast.loading('Fazendo login, por favor aguarde...');
 
       const response = await unityService.getUserUnitsLogin(userLogin.dsEmail, userLogin.dsSenha);
 
@@ -53,7 +53,7 @@ function Basic() {
           sessionStorage.setItem('user', userString);
         }
 
-        toast.update(pendingToast, {
+        toast.update(pendingToastId, {
           render: 'Login realizado com sucesso!',
           type: 'success',
           isLoading: false,
@@ -62,7 +62,7 @@ function Basic() {
 
         navigate('/dashboard');
       } else {
-        toast.update(pendingToast, {
+        toast.update(pendingToastId, {
           render: 'Erro de login: Token não encontrado.',
           type: 'error',
           isLoading: false,
@@ -70,7 +70,7 @@ function Basic() {
         });
       }
     } catch (error) {
-      toast.update(pendingToast, {
+      toast.update(pendingToastId, {
         render: 'Falha no login. Verifique suas credenciais.',
         type: 'error',
         isLoading: false,
@@ -79,6 +79,7 @@ function Basic() {
       console.error('Falha no login', error);
     }
   };
+
   return (
     <BasicLayout image={bgImage}>
       <Card>

@@ -6,6 +6,9 @@ import SignUp from 'layouts/authentication/sign-up';
 
 // @mui icons
 import Icon from '@mui/material/Icon';
+import CadastroMedicamento from './layouts/addMedications';
+import TableMedicamentos from './layouts/tableMedications';
+import TableStorage from './layouts/storage';
 
 const routes = [
   {
@@ -33,6 +36,33 @@ const routes = [
     icon: <Icon fontSize="small">table_view</Icon>,
     route: '/tables',
     component: <Tables />,
+    protected: true,
+  },
+  {
+    type: 'collapse',
+    name: 'Estoque de Medicamentos',
+    key: 'medicamentos-estoque',
+    icon: <Icon fontSize="small">inventory</Icon>,
+    route: '/medicamentos/estoque',
+    component: <TableStorage />,
+    protected: true,
+  },
+  {
+    type: 'collapse',
+    name: 'Lista de Medicamentos',
+    key: 'medicamentos-lista',
+    icon: <Icon fontSize="small">list</Icon>,
+    route: '/medicamentos/lista',
+    component: <TableMedicamentos />,
+    protected: true,
+  },
+  {
+    type: 'collapse',
+    name: 'Cadastrar Medicamento',
+    key: 'medicamentos-cadastrar',
+    icon: <Icon fontSize="small">add_circle</Icon>,
+    route: '/medicamentos/cadastrar',
+    component: <CadastroMedicamento />,
     protected: true,
   },
   {
