@@ -24,7 +24,7 @@ function Dashboard() {
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox py={3}>
-        <Grid container spacing={3}>
+        {/* <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
@@ -135,7 +135,15 @@ function Dashboard() {
               <OrdersOverview />
             </Grid>
           </Grid>
-        </MDBox>
+        </MDBox> */}
+        <iframe
+          title="RelatorioFarmaNotifica"
+          width="100%"
+          height="1000"
+          src="https://app.powerbi.com/view?r=eyJrIjoiNmRhNzczOWYtMWVmNC00MmVjLTgwYjAtOTRiNTFjMWRiOWI3IiwidCI6IjU5ZDRmMjQ5LTA1MjAtNDZjZi1iNmIyLTg3M2Q1ZGE1NDNmZSJ9"
+          frameBorder="0"
+          allowFullScreen="true"
+        ></iframe>
       </MDBox>
       <Footer />
     </DashboardLayout>
