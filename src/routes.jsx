@@ -9,6 +9,8 @@ import Icon from '@mui/material/Icon';
 import CadastroMedicamento from './layouts/addMedications';
 import TableMedicamentos from './layouts/tableMedications';
 import TableStorage from './layouts/storage';
+import Payments from './layouts/authentication/payment-method';
+import SignUpPartner from './layouts/authentication/sign-up-partner';
 
 const routes = [
   {
@@ -81,6 +83,24 @@ const routes = [
     icon: <Icon fontSize="small">assignment</Icon>,
     route: '/authentication/sign-up',
     component: <SignUp />,
+    protected: false,
+  },
+  {
+    type: 'collapse',
+    name: 'Cadastro Parceiro',
+    key: 'sign-up-partner',
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: '/authentication/sign-up/partner',
+    component: <SignUpPartner />,
+    protected: false,
+  },
+  {
+    type: 'collapse',
+    name: 'Pagamentos',
+    key: 'payments',
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: '/authentication/paymentMethod',
+    component: <Payments />,
     protected: false,
   },
 ];

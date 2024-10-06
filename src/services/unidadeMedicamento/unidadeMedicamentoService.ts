@@ -2,7 +2,7 @@ import apiJson from 'services/apiForJson';
 
 export const getUnidadeMedicamento = async (cdUnidade: number, snUtilizado: string) => {
   try {
-    const response = await apiJson.get(`/UnidadeMedicamento/${cdUnidade}`, {
+    const response = await apiJson.get(`/UnidadeMedicamento/${1}`, {
       params: {
         snUtilizado: 'S',
       },

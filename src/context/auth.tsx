@@ -11,7 +11,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState<UserUnityModel>();
 
-  const login = (loadUser: UserUnityModel) => {
+  const login = (loadUser?: UserUnityModel) => {
+    console.log('login feito');
     setIsAuthenticated(true);
     setUser(loadUser);
   };

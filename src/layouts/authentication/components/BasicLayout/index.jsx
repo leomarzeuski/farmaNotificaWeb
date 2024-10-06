@@ -34,8 +34,8 @@ function BasicLayout({ image, children }) {
       <DefaultNavbar
         action={{
           type: '',
-          route: '/dashboard',
-          label: 'Acesse Gratis',
+          route: '/authentication/sign-up/partner',
+          label: 'Seja um apoiador!',
           color: 'dark',
         }}
       />

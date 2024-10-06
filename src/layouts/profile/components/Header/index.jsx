@@ -5,6 +5,8 @@ import AppBar from '@mui/material/AppBar';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import Modal from '@mui/material/Modal';
+import { Box, Button, Typography, List, ListItem, ListItemText } from '@mui/material';
 
 import MDBox from 'components/MDBox';
 import MDButton from 'components/MDButton';
@@ -24,10 +26,15 @@ function Header({ children }) {
   const [profileImage, setProfileImage] = useState(defaultProfile);
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [isPaymentUser, setIsPaymentUser] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const userString = localStorage.getItem('user') || sessionStorage.getItem('user');
     const storedImage = localStorage.getItem('profileImage');
+    const storedPlan = localStorage.getItem('selectedPlan');
+    const isPaymentUserType = localStorage.getItem('isPaymentUser');
     if (userString) {
       const user = JSON.parse(userString);
       setUserData({
@@ -38,6 +45,10 @@ function Header({ children }) {
     }
     if (storedImage) {
       setProfileImage(storedImage);
+    }
+    if (storedPlan && isPaymentUserType) {
+      setSelectedPlan(JSON.parse(storedPlan));
+      setIsPaymentUser(JSON.parse(isPaymentUser));
     }
 
     function handleTabsOrientation() {
@@ -101,6 +112,27 @@ function Header({ children }) {
       setLoading(false);
       setEditMode(false);
     }
+  };
+
+  const handleCancelPlan = () => {
+    const userLoged = JSON.parse(localStorage.getItem('user'));
+    localStorage.setItem('user', JSON.stringify({ ...userLoged, selectedPlan: {} }));
+    setSelectedPlan(null);
+  };
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleSelectPlan = (plan) => {
+    const userLoged = JSON.parse(localStorage.getItem('user'));
+    localStorage.setItem('user', JSON.stringify({ ...userLoged, selectedPlan: plan }));
+    setSelectedPlan(plan);
+    setModalOpen(false);
   };
 
   return (
@@ -196,6 +228,47 @@ function Header({ children }) {
             <AppBar position="static" />
           </Grid>
         </Grid>
+
+        {isPaymentUser ? (
+          selectedPlan ? (
+            <MDBox
+              mt={2}
+              p={3}
+              sx={{
+                background: selectedPlan.background,
+                borderRadius: '12px',
+                color: '#fff',
+              }}
+            >
+              <MDTypography variant="subtitle1" fontWeight="medium" mb={1} color="#fff">
+                {selectedPlan.subtitle}
+              </MDTypography>
+              <MDTypography variant="h6" fontWeight="bold" mb={1} color="#fff">
+                {selectedPlan.title} - {selectedPlan.price}
+              </MDTypography>
+              <MDTypography variant="body2" mb={2} color="#fff">
+                Benefícios:
+              </MDTypography>
+              <List>
+                {selectedPlan.benefits.map((benefit, index) => (
+                  <ListItem key={index}>
+                    <ListItemText primary={benefit} />
+                  </ListItem>
+                ))}
+              </List>
+              <MDButton variant="contained" color="error" onClick={handleCancelPlan}>
+                Cancelar Plano
+              </MDButton>
+            </MDBox>
+          ) : (
+            <MDBox mt={2}>
+              <MDButton variant="outlined" color="info" onClick={handleOpenModal}>
+                Contratar Plano
+              </MDButton>
+            </MDBox>
+          )
+        ) : null}
+
         <Grid container spacing={2} mt={2}>
           <Grid item>
             {editMode ? (
@@ -216,6 +289,59 @@ function Header({ children }) {
         </Grid>
         {children}
       </Card>
+
+      {/* Modal para escolher um novo plano */}
+      <Modal open={modalOpen} onClose={handleCloseModal}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 400,
+            bgcolor: 'background.paper',
+            boxShadow: 24,
+            p: 4,
+            borderRadius: 2,
+          }}
+        >
+          <Typography variant="h6" gutterBottom>
+            Selecione um Plano
+          </Typography>
+          <Button
+            fullWidth
+            onClick={() =>
+              handleSelectPlan({
+                title: 'Visibilidade com anúncios',
+                price: 'R$ 99,00/mês',
+                subtitle: 'Nível Básico',
+                benefits: [
+                  'Maior exposição na lista de farmácias',
+                  'Destaque com anúncios',
+                  'Até 2 campanhas',
+                ],
+                background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',
+              })
+            }
+          >
+            Plano Básico - R$99/mês
+          </Button>
+          <Button
+            fullWidth
+            onClick={() =>
+              handleSelectPlan({
+                title: 'Premium com Consultoria',
+                price: 'R$ 299,00/mês',
+                subtitle: 'Nível Profissional',
+                benefits: ['Máxima visibilidade', 'Consultoria personalizada', 'Até 5 campanhas'],
+                background: 'linear-gradient(135deg, #d53369 0%, #daae51 100%)',
+              })
+            }
+          >
+            Plano Premium - R$299/mês
+          </Button>
+        </Box>
+      </Modal>
     </MDBox>
   );
 }
