@@ -216,15 +216,27 @@ function StorageList() {
         </Grid>
       </Grid>
 
-      <Dialog open={openAddModal} onClose={handleCloseAddModal}>
+      <Dialog open={openAddModal} onClose={handleCloseAddModal} maxWidth="sm" fullWidth>
         <DialogTitle>Adicionar Medicamento</DialogTitle>
         <DialogContent>
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Quantidade</InputLabel>
+            <Select label="Quantidade" fullWidth style={{ height: 45 }}>
+              {[...Array(10)].map((_, index) => (
+                <MenuItem key={index + 1} value={index + 1}>
+                  {index + 1}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
           <FormControl fullWidth margin="normal">
             <InputLabel>Medicamento</InputLabel>
             <Select
               value={selectedMedicamento}
               onChange={(e) => setSelectedMedicamento(e.target.value)}
-              label="Medicamento"
+              label="Medicamentos"
+              fullWidth
               style={{ height: 45 }}
             >
               {medicamentos.map((medicamento) => (

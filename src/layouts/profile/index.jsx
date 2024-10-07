@@ -46,35 +46,6 @@ function Overview() {
             </Grid>
             <Grid item xs={12} md={6} xl={4} sx={{ display: 'flex' }}>
               <Divider orientation="vertical" sx={{ ml: -2, mr: 1 }} />
-              {/* <ProfileInfoCard
-                title="Informações do Perfil"
-                description="Olá, eu sou Dr. João Silva, farmacêutico responsável. Nosso objetivo é fornecer os melhores medicamentos e atendimento de qualidade para todos os nossos clientes."
-                info={{
-                  fullName: 'Dr. João Silva',
-                  mobile: '(11) 98765-4321',
-                  email: 'joaosilva@farmacia.com',
-                  location: 'Brasil',
-                }}
-                social={[
-                  {
-                    link: 'https://www.facebook.com/',
-                    icon: <FacebookIcon />,
-                    color: 'facebook',
-                  },
-                  {
-                    link: 'https://twitter.com/',
-                    icon: <TwitterIcon />,
-                    color: 'twitter',
-                  },
-                  {
-                    link: 'https://www.instagram.com/',
-                    icon: <InstagramIcon />,
-                    color: 'instagram',
-                  },
-                ]}
-                action={{ route: '', tooltip: 'Editar Perfil' }}
-                shadow={false}
-              /> */}
               <Divider orientation="vertical" sx={{ mx: 0 }} />
             </Grid>
           </Grid>

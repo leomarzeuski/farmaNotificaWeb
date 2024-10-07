@@ -9,6 +9,9 @@ import Icon from '@mui/material/Icon';
 import CadastroMedicamento from './layouts/addMedications';
 import TableMedicamentos from './layouts/tableMedications';
 import TableStorage from './layouts/storage';
+import Payments from './layouts/authentication/payment-method';
+import SignUpPartner from './layouts/authentication/sign-up-partner';
+import TableLinkAfiliado from './layouts/tableAfiliateLink';
 
 const routes = [
   {
@@ -67,6 +70,15 @@ const routes = [
   },
   {
     type: 'collapse',
+    name: 'Cadastrar Link Afiliados',
+    key: 'cadastrar-link-afiliado',
+    icon: <Icon fontSize="small">add_circle</Icon>,
+    route: '/cadastrar/link-afiliado',
+    component: <TableLinkAfiliado />,
+    protected: true,
+  },
+  {
+    type: 'collapse',
     name: 'Login',
     key: 'sign-in',
     icon: <Icon fontSize="small">login</Icon>,
@@ -81,6 +93,24 @@ const routes = [
     icon: <Icon fontSize="small">assignment</Icon>,
     route: '/authentication/sign-up',
     component: <SignUp />,
+    protected: false,
+  },
+  {
+    type: 'collapse',
+    name: 'Cadastro Parceiro',
+    key: 'sign-up-partner',
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: '/authentication/sign-up/partner',
+    component: <SignUpPartner />,
+    protected: false,
+  },
+  {
+    type: 'collapse',
+    name: 'Pagamentos',
+    key: 'payments',
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: '/authentication/paymentMethod',
+    component: <Payments />,
     protected: false,
   },
 ];
