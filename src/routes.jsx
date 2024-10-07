@@ -11,6 +11,7 @@ import TableMedicamentos from './layouts/tableMedications';
 import TableStorage from './layouts/storage';
 import Payments from './layouts/authentication/payment-method';
 import SignUpPartner from './layouts/authentication/sign-up-partner';
+import TableLinkAfiliado from './layouts/tableAfiliateLink';
 
 const routes = [
   {
@@ -65,6 +66,15 @@ const routes = [
     icon: <Icon fontSize="small">add_circle</Icon>,
     route: '/medicamentos/cadastrar',
     component: <CadastroMedicamento />,
+    protected: true,
+  },
+  {
+    type: 'collapse',
+    name: 'Cadastrar Link Afiliados',
+    key: 'cadastrar-link-afiliado',
+    icon: <Icon fontSize="small">add_circle</Icon>,
+    route: '/cadastrar/link-afiliado',
+    component: <TableLinkAfiliado />,
     protected: true,
   },
   {

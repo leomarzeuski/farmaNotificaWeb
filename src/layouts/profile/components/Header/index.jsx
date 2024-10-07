@@ -31,24 +31,22 @@ function Header({ children }) {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    const userString = localStorage.getItem('user') || sessionStorage.getItem('user');
+    const userLoged = JSON.parse(localStorage.getItem('user'));
+    // const userString = localStorage.getItem('user') || sessionStorage.getItem('user');
     const storedImage = localStorage.getItem('profileImage');
-    const storedPlan = localStorage.getItem('selectedPlan');
-    const isPaymentUserType = localStorage.getItem('isPaymentUser');
-    if (userString) {
-      const user = JSON.parse(userString);
+    if (userLoged) {
       setUserData({
-        nome: user.dsNome || '',
-        email: user.dsEmail || '',
+        nome: userLoged.dsNome || '',
+        email: userLoged.dsEmail || '',
         senha: '',
       });
+      setSelectedPlan(userLoged.selectedPlan);
+      setIsPaymentUser(userLoged.isPaymentUser);
     }
+
+    console.log({ userLoged });
     if (storedImage) {
       setProfileImage(storedImage);
-    }
-    if (storedPlan && isPaymentUserType) {
-      setSelectedPlan(JSON.parse(storedPlan));
-      setIsPaymentUser(JSON.parse(isPaymentUser));
     }
 
     function handleTabsOrientation() {
@@ -88,7 +86,7 @@ function Header({ children }) {
   };
 
   const handleCancelEdit = () => {
-    setEditMode(false); // Cancela a edição sem salvar
+    setEditMode(false);
   };
 
   const handleSave = async () => {
@@ -116,7 +114,7 @@ function Header({ children }) {
 
   const handleCancelPlan = () => {
     const userLoged = JSON.parse(localStorage.getItem('user'));
-    localStorage.setItem('user', JSON.stringify({ ...userLoged, selectedPlan: {} }));
+    localStorage.setItem('user', JSON.stringify({ ...userLoged, selectedPlan: null }));
     setSelectedPlan(null);
   };
 
@@ -241,21 +239,22 @@ function Header({ children }) {
               }}
             >
               <MDTypography variant="subtitle1" fontWeight="medium" mb={1} color="#fff">
-                {selectedPlan.subtitle}
+                {selectedPlan?.subtitle}
               </MDTypography>
               <MDTypography variant="h6" fontWeight="bold" mb={1} color="#fff">
-                {selectedPlan.title} - {selectedPlan.price}
+                {selectedPlan?.title} - {selectedPlan?.price}
               </MDTypography>
               <MDTypography variant="body2" mb={2} color="#fff">
                 Benefícios:
               </MDTypography>
               <List>
-                {selectedPlan.benefits.map((benefit, index) => (
+                {(selectedPlan?.benefits || []).map((benefit, index) => (
                   <ListItem key={index}>
                     <ListItemText primary={benefit} />
                   </ListItem>
                 ))}
               </List>
+
               <MDButton variant="contained" color="error" onClick={handleCancelPlan}>
                 Cancelar Plano
               </MDButton>
@@ -333,7 +332,13 @@ function Header({ children }) {
                 title: 'Premium com Consultoria',
                 price: 'R$ 299,00/mês',
                 subtitle: 'Nível Profissional',
-                benefits: ['Máxima visibilidade', 'Consultoria personalizada', 'Até 5 campanhas'],
+                benefits: [
+                  'Máxima visibilidade',
+                  'Maior exposição na lista de farmácias',
+                  'Consultoria personalizada',
+                  'Destaque sempre no topo',
+                  'Até 5 campanhas',
+                ],
                 background: 'linear-gradient(135deg, #d53369 0%, #daae51 100%)',
               })
             }

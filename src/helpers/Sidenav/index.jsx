@@ -47,6 +47,8 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
   const handleLogout = () => {
     localStorage.removeItem('authToken');
     sessionStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
 
     navigate('/authentication/sign-in');
   };
@@ -69,15 +71,24 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
     return localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
   }
 
-  const isPaymentUser = JSON.parse(localStorage.getItem('user')).isPaymentUser;
+  const isPaymentUser = JSON.parse(localStorage.getItem('user'))?.isPaymentUser;
 
   const renderRoutes = routes
     .filter((route) => {
-      if (isAuthenticated() && isPaymentUser) {
-        return route.key === 'dashboard' || route.key === 'profile';
-      }
-      if (isAuthenticated() && (route.key === 'sign-in' || route.key === 'sign-up')) {
-        return false;
+      if (isAuthenticated()) {
+        if (isPaymentUser) {
+          return (
+            route.key === 'dashboard' ||
+            route.key === 'profile' ||
+            route.key === 'cadastrar-link-afiliado'
+          );
+        } else {
+          return (
+            route.key !== 'sign-in' &&
+            route.key !== 'sign-up' &&
+            route.key !== 'cadastrar-link-afiliado'
+          );
+        }
       }
       return true;
     })

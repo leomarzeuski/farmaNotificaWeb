@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import {
@@ -21,110 +23,116 @@ import DashboardNavbar from 'helpers/Navbars/DashboardNavbar';
 import Footer from 'helpers/Footer';
 import { Card } from '@mui/material';
 
-const salesData = [
-  { name: 'Jan', vendas: 4000, receita: 2400 },
-  { name: 'Feb', vendas: 3000, receita: 1398 },
-  { name: 'Mar', vendas: 2000, receita: 9800 },
-  { name: 'Apr', vendas: 2780, receita: 3908 },
-  { name: 'May', vendas: 1890, receita: 4800 },
-  { name: 'Jun', vendas: 2390, receita: 3800 },
-  { name: 'Jul', vendas: 3490, receita: 4300 },
-];
-
-const performanceData = [
-  { name: 'Campanha 1', performance: 400 },
-  { name: 'Campanha 2', performance: 300 },
-  { name: 'Campanha 3', performance: 200 },
-  { name: 'Campanha 4', performance: 278 },
-  { name: 'Campanha 5', performance: 189 },
-];
-
-const productPieData = [
-  { name: 'Isotretinoina ', value: 400 },
-  { name: 'Dapagliflozina ', value: 300 },
-  { name: 'Olanzapina', value: 300 },
-  { name: 'Pravastatina', value: 200 },
-];
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-
-const affiliateData = [
-  { name: 'Link Afiliado 1', vendas: 1500 },
-  { name: 'Link Afiliado 2', vendas: 1000 },
-  { name: 'Link Afiliado 3', vendas: 1200 },
-  { name: 'Link Afiliado 4', vendas: 1300 },
-  { name: 'Link Afiliado 5', vendas: 900 },
-];
-
-const engagementData = [
-  { name: '01/07', engagement: 2400 },
-  { name: '08/07', engagement: 1398 },
-  { name: '15/07', engagement: 9800 },
-  { name: '22/07', engagement: 3908 },
-  { name: '29/07', engagement: 4800 },
-];
-
+import { Link } from 'react-router-dom';
+import * as chartData from './data/salesData';
 function Dashboard() {
   const [isPaymentUser, setIsPaymentUser] = useState(false);
+  const [isUserValidPlan, setIsUserValidPlan] = useState({});
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
     if (userData?.isPaymentUser) {
       setIsPaymentUser(true);
+      setIsUserValidPlan(userData.selectedPlan);
     }
   }, []);
+
+  const salesData = [
+    { name: 'Jan', vendas: 4000, receita: 2400 },
+    { name: 'Feb', vendas: 3000, receita: 1398 },
+    { name: 'Mar', vendas: 2000, receita: 9800 },
+    { name: 'Apr', vendas: 2780, receita: 3908 },
+    { name: 'May', vendas: 1890, receita: 4800 },
+    { name: 'Jun', vendas: 2390, receita: 3800 },
+    { name: 'Jul', vendas: 3490, receita: 4300 },
+  ];
+  
+  const performanceData = [
+    { name: 'Campanha 1', performance: 400 },
+    { name: 'Campanha 2', performance: 300 },
+    { name: 'Campanha 3', performance: 200 },
+    { name: 'Campanha 4', performance: 278 },
+    { name: 'Campanha 5', performance: 189 },
+  ];
+  
+  const productPieData = [
+    { name: 'Isotretinoina ', value: 400 },
+    { name: 'Dapagliflozina ', value: 300 },
+    { name: 'Olanzapina', value: 300 },
+    { name: 'Pravastatina', value: 200 },
+  ];
+  
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+  
+  const affiliateData = [
+    { name: 'Link Afiliado 1', vendas: 1500 },
+    { name: 'Link Afiliado 2', vendas: 1000 },
+    { name: 'Link Afiliado 3', vendas: 1200 },
+    { name: 'Link Afiliado 4', vendas: 1300 },
+    { name: 'Link Afiliado 5', vendas: 900 },
+  ];
+  
+  const engagementData = [
+    { name: '01/07', engagement: 2400 },
+    { name: '08/07', engagement: 1398 },
+    { name: '15/07', engagement: 9800 },
+    { name: '22/07', engagement: 3908 },
+    { name: '29/07', engagement: 4800 },
+  ];
+  
 
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      {isPaymentUser && (
+      {isPaymentUser && isUserValidPlan && (
         <MDBox py={3}>
           <Grid container spacing={3}>
-            {/* Gráfico de Barras - Vendas e Receita */}
-            <Grid item xs={12} md={6} lg={6}>
-              <Card>
-                <MDBox p={2}>
-                  <h4>Vendas e Receita Mensal</h4>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={salesData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Bar dataKey="vendas" fill="#8884d8" />
-                      <Bar dataKey="receita" fill="#82ca9d" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </MDBox>
-              </Card>
-            </Grid>
+          {isUserValidPlan?.price !== "R$ 99,00/mês" && (
+        <>
+          <Grid item xs={12} md={6} lg={6}>
+            <Card>
+              <MDBox p={2}>
+                <h4>Vendas e Receita Mensal</h4>
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart data={chartData.salesData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="vendas" fill="#8884d8" />
+                    <Bar dataKey="receita" fill="#82ca9d" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </MDBox>
+            </Card>
+          </Grid>
 
-            {/* Gráfico de Linha - Performance de Campanhas */}
-            <Grid item xs={12} md={6} lg={6}>
-              <Card>
-                <MDBox p={2}>
-                  <h4>Performance de Campanhas</h4>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={performanceData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Line
-                        type="monotone"
-                        dataKey="performance"
-                        stroke="#8884d8"
-                        activeDot={{ r: 8 }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </MDBox>
-              </Card>
-            </Grid>
+          <Grid item xs={12} md={6} lg={6}>
+            <Card>
+              <MDBox p={2}>
+                <h4>Performance de Campanhas</h4>
+                <ResponsiveContainer width="100%" height={300}>
+                  <LineChart data={chartData.performanceData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Line
+                      type="monotone"
+                      dataKey="performance"
+                      stroke="#8884d8"
+                      activeDot={{ r: 8 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </MDBox>
+            </Card>
+          </Grid>
+        </>
+      )}
 
-            {/* Gráfico de Pizza - Vendas por Produto */}
             <Grid item xs={12} md={6} lg={6}>
               <Card>
                 <MDBox p={2}>
@@ -132,7 +140,7 @@ function Dashboard() {
                   <ResponsiveContainer width="100%" height={300}>
                     <PieChart>
                       <Pie
-                        data={productPieData}
+                        data={chartData.productPieData}
                         cx="50%"
                         cy="50%"
                         labelLine={false}
@@ -152,13 +160,12 @@ function Dashboard() {
               </Card>
             </Grid>
 
-            {/* Gráfico de Linha - Vendas Mensais */}
             <Grid item xs={12} md={6} lg={6}>
               <Card>
                 <MDBox p={2}>
                   <h4>Vendas Mensais</h4>
                   <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={salesData}>
+                    <LineChart data={chartData.salesData}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" />
                       <YAxis />
@@ -172,13 +179,12 @@ function Dashboard() {
               </Card>
             </Grid>
 
-            {/* Novo Gráfico de Barras - Vendas por Afiliado */}
             <Grid item xs={12} md={6} lg={6}>
               <Card>
                 <MDBox p={2}>
                   <h4>Vendas por Link Afiliado</h4>
                   <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={affiliateData}>
+                    <BarChart data={chartData.affiliateData}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" />
                       <YAxis />
@@ -191,13 +197,12 @@ function Dashboard() {
               </Card>
             </Grid>
 
-            {/* Novo Gráfico de Linha - Engajamento em Redes Sociais */}
             <Grid item xs={12} md={6} lg={6}>
               <Card>
                 <MDBox p={2}>
                   <h4>Engajamento com FarmaNotifica</h4>
                   <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={engagementData}>
+                    <LineChart data={chartData.engagementData}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" />
                       <YAxis />
@@ -212,6 +217,27 @@ function Dashboard() {
           </Grid>
         </MDBox>
       )}
+      {!isUserValidPlan && (
+        <MDBox py={3}>
+          <Grid container justifyContent="center">
+            <Grid item xs={12} md={6} lg={4}>
+              <Card>
+                <MDBox p={3} textAlign="center">
+                  <h4>Você não possui um plano válido 😢</h4>
+                  <p>
+                    Por favor, acesse a página de{' '}
+                    <Link to="/profile" style={{ color: '#1976d2', textDecoration: 'none' }}>
+                      Perfil
+                    </Link>{' '}
+                    para atualizar seu plano.
+                  </p>
+                </MDBox>
+              </Card>
+            </Grid>
+          </Grid>
+        </MDBox>
+      )}
+
       {!isPaymentUser && (
         <iframe
           title="RelatorioFarmaNotifica"

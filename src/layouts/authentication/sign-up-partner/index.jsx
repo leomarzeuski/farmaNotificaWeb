@@ -73,7 +73,7 @@ function SignUpPartner() {
             textAlign="center"
           >
             <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-              Seja um apoiador FarmaNotifica
+              Seja um Membro Exclusivo FarmaNotifica!
             </MDTypography>
             <MDTypography display="block" variant="button" color="white" my={1}>
               Entre com seu E-mail e senha para se registrar
@@ -90,7 +90,7 @@ function SignUpPartner() {
                     fullWidth
                     {...register('dsNome')}
                     error={Boolean(errors.dsNome)}
-                    helperText={errors.dsNome?.message} // Exibe o erro se houver
+                    helperText={errors.dsNome?.message}
                   />
                 </MDBox>
                 <MDBox mb={2}>

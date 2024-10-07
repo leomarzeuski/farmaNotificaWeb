@@ -31,12 +31,9 @@ function Payments() {
       subtitle: 'Nível Básico',
       background: 'linear-gradient(135deg, #764ba2 0%, #667eea 100%)',
       benefits: [
-        'Maior exposição na lista de farmácias do app',
-        'Farmácia destacada com anúncios moderados',
-        'Compatível com TV, computadores, celulares e tablets',
-        'Até 2 campanhas de marketing simultâneas',
-        '2 campanhas de download de folhetos e promoções',
-        'Relatório de visualizações e cliques',
+        'Maior exposição na lista de farmácias',
+        'Destaque com anúncios',
+        'Até 2 campanhas',
       ],
     },
     {
@@ -45,13 +42,11 @@ function Payments() {
       subtitle: 'Nível Profissional',
       background: 'linear-gradient(135deg, #d53369 0%, #daae51 100%)',
       benefits: [
-        'Máxima visibilidade e destaque no app',
-        'Listagem prioritária sem anúncios em todo o app',
-        'Compatível com TV, computadores, celulares e tablets',
-        'Até 5 campanhas de marketing simultâneas',
-        '6 campanhas de download de folhetos e promoções',
-        'Consultoria personalizada de marketing para farmácias',
-        'Relatório completo de engajamento, campanhas e retorno',
+        'Máxima visibilidade',
+        'Maior exposição na lista de farmácias',
+        'Consultoria personalizada',
+        'Destaque sempre no topo',
+        'Até 5 campanhas',
       ],
     },
   ];
@@ -124,10 +119,10 @@ function Payments() {
           </MDBox>
           <MDBox pt={4} pb={3} px={3}>
             <MDTypography variant="h5" fontWeight="medium" mb={2} textAlign="center">
-              {selectedPlan.title}
+              {selectedPlan?.title}
             </MDTypography>
             <MDTypography variant="h6" fontWeight="bold" color="info" mb={3} textAlign="center">
-              {selectedPlan.price}
+              {selectedPlan?.price}
             </MDTypography>
 
             <MDBox component="form">
@@ -138,7 +133,7 @@ function Payments() {
                   variant="standard"
                   fullWidth
                   name="cardName"
-                  value={cardDetails.cardName}
+                  value={cardDetails?.cardName}
                   onChange={handleInputChange}
                 />
               </MDBox>
@@ -149,7 +144,7 @@ function Payments() {
                   variant="standard"
                   fullWidth
                   name="cardNumber"
-                  value={cardDetails.cardNumber}
+                  value={cardDetails?.cardNumber}
                   onChange={handleInputChange}
                 />
               </MDBox>
@@ -160,7 +155,7 @@ function Payments() {
                   variant="standard"
                   fullWidth
                   name="expiryDate"
-                  value={cardDetails.expiryDate}
+                  value={cardDetails?.expiryDate}
                   onChange={handleInputChange}
                 />
                 <MDInput
@@ -169,7 +164,7 @@ function Payments() {
                   variant="standard"
                   fullWidth
                   name="cvv"
-                  value={cardDetails.cvv}
+                  value={cardDetails?.cvv}
                   onChange={handleInputChange}
                 />
               </MDBox>
